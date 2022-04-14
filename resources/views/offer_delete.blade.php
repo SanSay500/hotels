@@ -14,6 +14,6 @@
     <input type="submit" class="bnt btn-danger" value="Delete">
     </form>
     <br>
-    <p><a href="/">Main Page</a></p>
+    <p><a href="/home">Back</a></p>
 @endsection
 

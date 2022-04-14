@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->string('offer_title')->nullable();
             $table->text('offer_content')->nullable();
             $table->string('offer_hotel');
             $table->float('offer_price');

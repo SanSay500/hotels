@@ -7,10 +7,21 @@
         @csrf
         @method('PATCH')
         <div class="form-group">
-            <label for="txtTitle">Offer</label>
-            <input name="title" id="txtTitle" class="form-control
-                   @error ('title') is-invalid @enderror" value="{{ old('title',$offer->offer_title) }}">
-        @error ('title')
+            <label for="txtArrivalDate">Arrival Date</label>
+            <input name="arrivalDate" type="date" id="txtArrivalDate" class="form-control
+                   @error ('arrivalDate') is-invalid @enderror" value="{{ old('arrivalDate', $offer->offer_arrival_date) }}">
+            @error ('arrivalDate')
+            <span class="invalid-feedback">
+            <strong>{{$message}}</strong>
+        </span>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="txtHotel">Hotel</label>
+            <input name="hotel" id="txtHotel" class="form-control
+                   @error ('hotel') is-invalid @enderror" value="{{ old('hotel',$offer->offer_hotel) }}">
+        @error ('hotel')
         <span class="invalid-feedback">
             <strong>{{$message}}</strong>
         </span>
@@ -29,7 +40,29 @@
         </div>
 
         <div class="form-group">
-            <label for="txtContent">City</label>
+            <label for="txtNights">Nights</label>
+            <input name="nights" id="txtNights"
+                   class="form-control @error ('nights') is-invalid @enderror" row="3" value="{{ old('nights', $offer->offer_nights) }}">
+            @error ('nights')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="txtRooms">Rooms Quantity</label>
+            <input name="rooms" id="txtRooms"
+                   class="form-control @error ('rooms') is-invalid @enderror" row="3" value="{{ old('rooms', $offer->offer_rooms_quantity) }}">
+            @error ('rooms')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="txtCity">City</label>
             <input name="city" id="txtCity"
                    class="form-control @error ('city') is-invalid @enderror" value="{{ old('city', $offer->offer_city) }}">
         @error ('city')
@@ -45,11 +78,15 @@
                    class="form-control @error ('price') is-invalid @enderror" value="{{ old('price', $offer->offer_price) }}">
         @error ('price')
             <span class="invalid-feedback">
-                <stron> {{ $message }}</stron>
+                <strong> {{ $message }}</strong>
             </span>
         @enderror
         </div>
+        <br>
 
         <input type="submit" class="btn btn-primary" value="Save">
     </form>
+    <br>
+    <p><a href="{{url()->previous()}}"><input type="submit" class="btn btn-primary" value="Back"></a></p>
+
 @endsection

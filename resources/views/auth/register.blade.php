@@ -45,7 +45,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="name" autofocus>
+                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
 
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                             <div class="col-md-6">
                                 <input id="company" type="text" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ old('company') }}" required autocomplete="company" autofocus>
 
-                                @error('phone')
+                                @error('company')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -75,7 +75,7 @@
                             <div class="col-md-6">
                                 <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required autocomplete="country" autofocus>
 
-                                @error('phone')
+                                @error('country')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -89,7 +89,7 @@
                             <div class="col-md-6">
                                 <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus>
 
-                                @error('phone')
+                                @error('description')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -102,7 +102,6 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -113,7 +112,6 @@
 
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
@@ -121,15 +119,21 @@
 
                         <div class="row mb-3">
                             <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Choose Your Role') }}</label>
-
                             <div class="col-md-6">
                                 <select id="role" class="form-control" name="role">
-                                    <option>Seller</option>
+                                    <option>Agent</option>
                                     <option>Hotel</option>
-                                    <option>Buyer</option>
                                 </select>
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="notifications" class="col-md-4 col-form-label text-md-end">{{ __('Get Notifications') }}</label>
+                                 <div class="col-md-6">
+                                   <input type="checkbox" id="notifications" name="notifications">
+                                 </div>
+                            </div>
+
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -138,10 +142,10 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 @endsection

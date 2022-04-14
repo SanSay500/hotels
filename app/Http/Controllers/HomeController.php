@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Offer;
+use App\Models\User;
 
 class HomeController extends Controller
 {
     private const OFFER_VALIDATOR = [
-      'title'=>'required|max:50',
       'content' => 'required',
       'hotel' => 'required',
+      'nights' => 'required|numeric',
+      'arrivalDate' => 'required',
+      'rooms' => 'required|numeric',
       'city' => 'required',
       'price'=>'required|numeric|min:1'
     ];
@@ -50,12 +53,14 @@ class HomeController extends Controller
     public function storeOffer(Request $request) {
         $validated = $request->validate(self::OFFER_VALIDATOR, self::OFFER_ERROR_MESSAGES);
         Auth::user()->offers()->create(
-            ['offer_title'=> $validated['title'],
-            'offer_city'=>$validated['city'],
-            'offer_hotel'=>$validated['hotel'],
-            'offer_content'=>$validated['content'],
-            'offer_price'=>$validated['price']
-            ]);
+               ['offer_content'=>$validated['content'],
+                'offer_hotel'=>$validated['hotel'],
+                'offer_nights'=>$validated['nights'],
+                'offer_rooms_quantity'=>$validated['rooms'],
+                'offer_arrival_date'=>$validated['arrivalDate'],
+                'offer_city'=>$validated['city'],
+                'offer_price'=>$validated['price']
+        ]);
         return redirect()->route('home');
     }
     public function showEditOfferForm(Offer $offer){
@@ -65,8 +70,12 @@ class HomeController extends Controller
     public function updateOffer(Request $request, Offer $offer){
         $validated = $request->validate(self::OFFER_VALIDATOR,
                                      self::OFFER_ERROR_MESSAGES);
-        $offer->fill(['offer_content'=>$validated['content'],
-                     'offer_title'=>$validated['title'],
+        $offer->fill(
+                    ['offer_content'=>$validated['content'],
+                     'offer_hotel'=>$validated['hotel'],
+                     'offer_nights'=>$validated['nights'],
+                     'offer_rooms_quantity'=>$validated['rooms'],
+                     'offer_arrival_date'=>$validated['arrivalDate'],
                      'offer_city'=>$validated['city'],
                      'offer_price'=>$validated['price']
         ]);
@@ -82,5 +91,4 @@ class HomeController extends Controller
         $offer->delete();
         return redirect()->route('home');
     }
-
 }

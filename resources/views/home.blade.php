@@ -6,6 +6,7 @@
     <h2>Welcome, {{ Auth::user()->name }}!</h2>
     <h2 class="my-3 text-center">My Offers</h2>
     <p class="text-right"><a href="{{route('offer.add')}}">Add Offer</a></p>
+    <p class="text-right"><a href="{{route('user.profile')}}">My Profile</a></p>
     @if (count($offers)>0)
        <table class="table table-stripped">
            <thead>
