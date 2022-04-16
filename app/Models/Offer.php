@@ -10,7 +10,7 @@ class Offer extends Model
 {
    use HasFactory;
 
-   protected $fillable=['offer_content','offer_hotel',
+   protected $fillable=['offer_content','offer_hotel','offer_id',
        'offer_nights','offer_rooms_quantity','offer_arrival_date',
        'offer_price','offer_city'];
 

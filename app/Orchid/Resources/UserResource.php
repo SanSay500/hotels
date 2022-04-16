@@ -21,7 +21,11 @@ class UserResource extends Resource
      */
     public function fields(): array
     {
-        return [];
+        return [
+            Input::make('name')
+                ->title('Name')
+                ->placeholder('Enter name here'),
+        ];
     }
 
     /**
@@ -33,6 +37,8 @@ class UserResource extends Resource
     {
         return [
             TD::make('id'),
+            TD::make('name'),
+            TD::make('phone'),
 
             TD::make('created_at', 'Date of creation')
                 ->render(function ($model) {
@@ -53,7 +59,10 @@ class UserResource extends Resource
      */
     public function legend(): array
     {
-        return [];
+        return [
+            Sight::make('name'),
+            Sight::make('phone'),
+        ];
     }
 
     /**
@@ -63,6 +72,8 @@ class UserResource extends Resource
      */
     public function filters(): array
     {
-        return [];
+        return [
+            QueryFilter::class
+        ];
     }
 }

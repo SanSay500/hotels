@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('offer_id');
+            $table->integer('buyer_id');
+            $table->integer('seller_id');
+            $table->string('city');
+            $table->string('hotel');
+            $table->date('arrival_date');
+            $table->string('price');
+            $table->string('rooms_quantity');
+            $table->string('nights');
             $table->timestamps();
         });
     }

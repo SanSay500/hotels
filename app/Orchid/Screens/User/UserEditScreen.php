@@ -118,6 +118,7 @@ class UserEditScreen extends Screen
                         ->method('save')
                 ),
 
+
             Layout::block(UserPasswordLayout::class)
                 ->title(__('Password'))
                 ->description(__('Ensure your account is using a long, random password to stay secure.'))
@@ -177,6 +178,7 @@ class UserEditScreen extends Screen
             ->toArray();
 
         $userData = $request->get('user');
+
         if ($user->exists && (string) $userData['password'] === '') {
             // When updating existing user null password means "do not change current password"
             unset($userData['password']);

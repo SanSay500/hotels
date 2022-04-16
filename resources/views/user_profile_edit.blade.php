@@ -4,7 +4,7 @@
 
 @section('main')
     <h2 class="my-3 text-center">Edit Profile</h2>
-    <form action="{{ route('profile.update',Auth::user()->id)}}" method="POST">
+    <form action="{{ route('profile.update',Auth::user()->id) }}" method="POST">
     @csrf
     @method('PATCH')
         <div class="form-group">
@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <label for="txtcompany">Company</label>
-            <input company="company" id="txtcompany" class="form-control
+            <input name="company" id="txtcompany" class="form-control
                    @error ('company') is-invalid @enderror" value="{{ old('company',Auth::user()->company) }}">
             @error ('company')
             <span class="invalid-feedback">
@@ -31,7 +31,7 @@
 
         <div class="form-group">
             <label for="txtcountry">Country</label>
-            <input country="country" id="txtcountry" class="form-control
+            <input name="country" id="txtcountry" class="form-control
                    @error ('country') is-invalid @enderror" value="{{ old('country',Auth::user()->country) }}">
             @error ('country')
             <span class="invalid-feedback">
@@ -42,7 +42,7 @@
 
         <div class="form-group">
             <label for="txtdescription">Description</label>
-            <input description="description" id="txtdescription" class="form-control
+            <input name="description" id="txtdescription" class="form-control
                    @error ('description') is-invalid @enderror" value="{{ old('description',Auth::user()->description) }}">
             @error ('description')
             <span class="invalid-feedback">
@@ -53,7 +53,7 @@
 
         <div class="form-group">
             <label for="txtphone">Phone</label>
-            <input phone="phone" id="txtphone" class="form-control
+            <input name="phone" id="txtphone" class="form-control
                    @error ('phone') is-invalid @enderror" value="{{ old('phone',Auth::user()->phone) }}">
             @error ('phone')
             <span class="invalid-feedback">
@@ -62,7 +62,6 @@
             @enderror
         </div>
         <br>
-
         <input type="submit" class="btn btn-primary" value="Save">
     </form>
     <br>

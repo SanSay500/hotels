@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Orchid\Platform\Models\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Orchid\Screen\AsSource;
+use Orchid\Filters\Filterable;
+use Orchid\Attachment\Attachable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use AsSource, Filterable, Attachable, Notifiable;
     /**
      * The attributes that are mass assignable.
      *

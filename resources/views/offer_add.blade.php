@@ -84,5 +84,7 @@
         <br>
         <input type="submit" class="btn btn-primary" value="Add ">
     </form>
+    <br>
+    <p><a href="/home">Back</a></p>
 
 @endsection

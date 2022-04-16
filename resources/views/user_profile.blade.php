@@ -13,8 +13,8 @@
     <p>Description: {{Auth::user()->description}}</p>
     <p>Points: {{Auth::user()->points}}</p>
     <p>Role: {{Auth::user()->role}}</p>
-{{--    <p><a href="{{ route('user.profile.edit', ['user'=>Auth::user()->id]) }}">--}}
-{{--            <input type="submit" class="btn btn-primary" value="Edit"></a></p>--}}
+    <p><a href="{{ route('user.profile.edit', ['user'=>Auth::user()->id]) }}">
+            <input type="submit" class="btn btn-primary" value="Edit"></a></p>
 
 
     <p><a href="/home"><input type="submit" class="btn btn-primary" value="Back"></a></p>

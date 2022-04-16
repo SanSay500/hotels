@@ -23,7 +23,10 @@ class EmailSenderScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'subject' => date('F').' Campaign News',
+
+        ];
     }
 
     /**
@@ -33,7 +36,7 @@ class EmailSenderScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'EmailSenderScreen';
+        return 'Email Sender Screen';
     }
 
     /**
@@ -41,9 +44,13 @@ class EmailSenderScreen extends Screen
      *
      * @return \Orchid\Screen\Action[]
      */
-    public function commandBar(): iterable
+    public function commandBar(): array
     {
-        return [];
+        return [
+            Button::make('Send Message')
+                ->icon('paper-plane')
+                ->method('sendMessage')
+        ];
     }
 
     /**
@@ -75,10 +82,30 @@ class EmailSenderScreen extends Screen
                     ->placeholder('Insert text here ...')
                     ->help('Add the content for the message that you would like to send.')
 
-            ])
+                ])
         ];
     }
+    public function sendMessage(Request $request)
+    {
+        $request->validate([
+            'subject' => 'required|min:6|max:50',
+            'users'   => 'required',
+            'content' => 'required|min:10'
+        ]);
+
+        Mail::raw($request->get('content'), function (Message $message) use ($request) {
+            $message->from('bf3310@yandex.ru');
+            $message->subject($request->get('subject'));
+
+            foreach ($request->get('users') as $email) {
+                $message->to($email);
+            }
+        });
 
 
-
+        Alert::info('Your email message has been sent successfully.');
+    }
 }
+
+
+

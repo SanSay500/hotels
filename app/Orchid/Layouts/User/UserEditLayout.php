@@ -30,6 +30,27 @@ class UserEditLayout extends Rows
                 ->required()
                 ->title(__('Email'))
                 ->placeholder(__('Email')),
+
+            Input::make('user.company')
+                ->type('text')
+                ->max(255)
+                ->required()
+                ->title(__('Company'))
+                ->placeholder(__('Company')),
+
+            Input::make('user.country')
+                ->type('text')
+                ->max(255)
+                ->required()
+                ->title(__('Country'))
+                ->placeholder(__('Country')),
+
+            Input::make('user.phone')
+                ->type('number')
+                ->max(255)
+                ->required()
+                ->title(__('Phone'))
+                ->placeholder(__('Phone')),
         ];
     }
 }

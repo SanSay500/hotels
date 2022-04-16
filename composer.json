@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.10",
+        "orchid/crud": "^3.6",
         "orchid/platform": "^12.3"
     },
     "require-dev": {

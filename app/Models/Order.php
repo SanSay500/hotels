@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    protected $fillable=['hotel','seller_id','buyer_id',
+        'nights','rooms_quantity','arrival_date',
+        'price','city','offer_id'];
 }

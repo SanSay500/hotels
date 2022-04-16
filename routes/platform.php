@@ -114,4 +114,9 @@ Route::screen('example-cards', ExampleCardsScreen::class)->name('platform.exampl
 Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
-Route::screen('email', EmailSenderScreen::class)->name('platform.email');
+Route::screen('email', EmailSenderScreen::class)->name('platform.email')
+->breadcrumbs(function (Trail $trail) {
+    return $trail
+        ->parent('platform.index')
+        ->push('Email sender');
+});
