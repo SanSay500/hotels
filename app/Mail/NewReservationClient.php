@@ -28,6 +28,6 @@ class NewReservationEmail extends Mailable
      */
     public function build()
     {
-        return $this->text('email_new_reservation');
+        return $this->text('emails/email_new_reservation');
     }
 }
