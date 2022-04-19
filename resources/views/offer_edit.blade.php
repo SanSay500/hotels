@@ -3,6 +3,8 @@
 @section('title', 'Edit offer :: My Offers')
 
 @section('main')
+<section class="offer__edit">
+    <div class="container"> 
     <form action="{{ route('offer.update', ['offer'=>$offer->id]) }}" method="POST">
         @csrf
         @method('PATCH')
@@ -83,10 +85,14 @@
         @enderror
         </div>
         <br>
-
+        <div class="btn-container">
+        <a href="{{url()->previous()}}"class="more-btn back-btn">Back</a>
         <input type="submit" class="btn btn-primary" value="Save">
     </form>
     <br>
-    <p><a href="{{url()->previous()}}"><input type="submit" class="btn btn-primary" value="Back"></a></p>
+    <p></p>
+    </div>
+</section>
+    
 
 @endsection

@@ -3,6 +3,8 @@
 @section('title', 'Add offer :: My Offers')
 
 @section('main')
+<section class="offer__add">
+    <div class="container">
     <form action="{{ route('offer.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -82,9 +84,13 @@
             @enderror
         </div>
         <br>
-        <input type="submit" class="btn btn-primary" value="Add ">
+        <div class="btn-container"><a class="more-btn back-btn" href="/home">Back</a>
+        <input type="submit" class="btn btn-primary off-add" value="Add "> </div>
     </form>
     <br>
-    <p><a href="/home">Back</a></p>
+    
+    </div>
+</section>
+    
 
 @endsection

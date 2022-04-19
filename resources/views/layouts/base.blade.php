@@ -9,30 +9,39 @@
     @livewireStyles
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-light bg-light">
-        <a href="{{route('index')}}"
-             class="navbar-brand mr-auto"> Main Page </a>
-        @guest
-        <a href="{{ route('register') }}"
-           class="nav-item nav-link ">Register</a>
-        <a href="{{ route('login') }}"
-           class="nav-item nav-link">Login</a>
-        @endguest
-        @auth
-            <a href="{{ route('home') }}"
-               class="nav-item nav-link">My Account</a>
-        <form action="{{ route('logout') }}" method="POST"
-              class="form-inline">
-            @csrf
-            <input type="submit" class="btn btn-danger"
-                   value="Logout">
-        </form>
-         @endauth
-    </nav>
-    <h1 class="my-3 text-center">Hotel Offers</h1>
+    <header class="header bg-light">
+        <div class="container">
+            <nav class="navbar navbar-light">
+                <a href="{{route('index')}}"
+                    class="nav-item nav-link"> Main Page </a>
+                @guest
+                <a href="{{ route('register') }}"
+                class="nav-item nav-link ">Register</a>
+                <a href="{{ route('login') }}"
+                class="nav-item nav-link">Login</a>
+                @endguest
+                @auth
+                    <a href="{{ route('home') }}"
+                    class="nav-item nav-link">My Account</a>
+                <form action="{{ route('logout') }}" method="POST"
+                    class="form-inline">
+                    @csrf
+                    <input type="submit" class="btn btn-danger"
+                        value="Logout">
+                </form>
+                @endauth
+            </nav>
+
+            
+        </div>
+    </header>
+    <section class="title">
+        <div class="container">
+            <h1 class="my-3 text-center">Hotel Offers</h1>
+        </div>
+    </section>
     @yield('main')
-</div>
+
 
 
 @livewireScripts

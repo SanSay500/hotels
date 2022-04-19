@@ -3,6 +3,8 @@
 @section('title', 'My Profile Edit')
 
 @section('main')
+<section class="user-profile__edit">
+    <div class="container">
     <h2 class="my-3 text-center">Edit Profile</h2>
     <form action="{{ route('profile.update',Auth::user()->id) }}" method="POST">
     @csrf
@@ -62,9 +64,11 @@
             @enderror
         </div>
         <br>
-        <input type="submit" class="btn btn-primary" value="Save">
+        <div class="btn-container"><a href="/home" class="more-btn back-btn">Back</a>
+        <input type="submit" class="btn btn-primary" value="Save"></div>
     </form>
-    <br>
-    <p><a href="./"><input type="submit" class="btn btn-primary" value="Back"></a></p>
+    </div>
+</section>
+    
 
 @endsection

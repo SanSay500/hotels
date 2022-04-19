@@ -1,4 +1,293 @@
 h1{
     background: url("/images/logo.webp") left / auto 100% no-repeat,
-    url("/images/logo.webp") right / auto 100% no-repeat;
+    url("/images/flag-Israel.png") right / auto 100% no-repeat;
+}
+h3{
+    font-size: 24px;
+}
+.card-header {
+    font-size: 24px;
+}
+.card-label {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 22px;
+}
+.form-check {
+    display: flex !important;
+    align-items: center;
+    padding-left: 0px !important;
+}
+.form-checkbox {
+    margin-top: 5px;
+    margin-left: 0!important;
+    margin-right: 15px!important;
+}
+.btn-login{
+    font-size: 20px;
+    padding: 5px 15px;
+}
+.btn:hover{
+    color: #0d6efd;
+    background-color: #fff;
+    border-color: #0d6efd;
+}
+.btn-forget{
+    font-size: 18px;
+    color:#212529;
+    text-decoration: none;
+    padding-left: 20px;
+
+}
+.btn-forget:hover, .nav-item:hover {
+    text-decoration: underline;
+    color: #0d6efd;
+}
+.nav-item{
+    font-size: 18px;
+}
+.navbar{
+    padding: 15px 0px;
+}
+.nav-link {
+    padding: 0px;
+    color:#212529;
+}
+.register-form{
+    padding-bottom: 15px;
+}
+.more-btn {
+    min-width: 50px;
+    min-height: 20px;
+    display: block;
+    padding: 5px 10px;
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.more-btn:hover{
+    color: #0d6efd;
+    background-color: #fff;
+    border-color: #0d6efd;
+}
+.btn{
+    font-size: 1em;
+    padding: 5px 10px;
+}
+.btn-container{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+.back-btn{
+    margin-right: 10px;
+}
+.hotels, .order-history{
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+.reserve, .user-profile__edit, .user-profile, .login-form, .register-form, .hotel-detail, .offer__delete, .offer__edit ,.profile,.order-history, .offer__add{
+    font-size: 20px;
+}
+.info-label{
+    font-weight: 600;
+}
+.offer__add form, .offer__edit form, .user-profile__edit form{
+    width: 50%;
+    margin: 0 auto;
+}
+.order-history{
+    font-size: 16px;
+}
+.filter-container{
+    display: flex;
+    align-items: center;
+}
+.filter{
+    display: flex;
+    flex-direction: column;
+}
+.filter-city, .filter-hotel{
+    margin-right: 10px;
+}
+.offer-label{
+    margin-bottom: 8px;
+}
+.img-icon{
+    width:100%;
+    height: 100%;
+    fill:#9fc5ff;
+    
+}
+.img-btn{
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+.img-icon:hover{
+    fill:#0d6efd;
+}
+.table th:hover{
+    color: #0d6efd;
+    cursor: pointer;
+}
+.link-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.info-for-agent{
+    margin: 0 auto;
+    width: 60%;
+    border: 1px solid #0d6efd;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 30px 0px rgb(13 110 253 / 20%);
+}
+.info-list{
+    padding: 25px 25px 25px 40px;
+    margin-bottom: 0;
+}
+@media(max-width: 1024px){
+    .btn-forget{
+        font-size: 16px;
+        padding-right: 0;
+    }
+    .form-checkbox {
+        margin-top: 0px;
+    }
+    .table>:not(caption)>*>*{
+        padding-right: 10px;
+    }
+}
+@media(max-width: 992px){
+    h3{
+        font-size: 20px;
+    }
+    .table{
+        font-size: 16px;
+    }
+    .table>:not(caption)>*>*{
+        padding-left: 0;
+    }
+}
+@media(max-width: 767px){
+    h3{
+        font-size: 18px;
+    }
+    .table{
+        font-size: 14px;
+    }
+    .offer-table h3{
+        font-size: 15px;
+    }
+    .offer-table>:not(caption)>*>*{
+        padding-right: 5px;
+    }
+    .offer-label{
+        font-size: 14px;
+    }
+    .nav-item {
+        font-size: 16px;
+    }
+    .offer__add form,.offer__edit form,.user-profile__edit form{
+        width: 75%;
+    }
+}
+@media (max-width: 512px){
+    .card-header {
+        font-size: 20px;
+    }
+    .card-label {
+        font-size: 16px;
+    }
+    .offer-table h3{
+        font-size: 14px;
+    }
+    h3{
+        font-size: 15px;
+    }
+    .table{
+        font-size: 12px;
+    }
+    .offer__add form, .offer__edit form,.user-profile__edit form{
+        width: 95%;
+    }
+}
+@media (max-width: 450px){
+    
+    h3{
+        font-size: 12px;
+    }
+    .table{
+        font-size: 10px;
+    }
+    .offer-table h3{
+        font-size: 12px;
+    }
+    .filter-container{
+        flex-wrap: wrap;
+    }
+    .filter{
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .filter .form-control{
+        flex: 2;
+    }
+    .offer-label{
+        flex: 1;
+        margin-bottom: 0px;
+        margin-right: 8px;
+        font-size: 12px;
+    }
+    .form-control{
+        font-size: 14px;
+    }
+    .filter-city, .filter-hotel{
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+    .coldn{
+        display: none;
+    }
+    .col22{
+        word-break: break-all;
+        }
+        .more-btn{
+            min-width: 40px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+        .img-btn{
+            width: 18px;
+            height: 18px;
+        }
+        .nav-item {
+            font-size: 14px;
+        }
+}
+
+@media(max-width: 340px){
+    .btn-forget{
+        font-size: 14px;
+        padding-left: 5px;
+    }
+    .img-icon{
+        width: 15px;
+        height: 15px;
+    }
+    .more-btn{
+        padding-right: 3px;
+        padding-left: 3px;
+    }
 }
