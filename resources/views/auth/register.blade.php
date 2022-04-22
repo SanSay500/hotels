@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form class="card">
+                <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
@@ -142,9 +142,8 @@
                                     </button>
                                 </div>
                             </div>
-
+                        </form>
                     </div>
-                </form>
                 </div>
             </div>
         </div>

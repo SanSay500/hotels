@@ -16,7 +16,8 @@
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.10",
         "orchid/crud": "^3.6",
-        "orchid/platform": "^12.3"
+        "orchid/platform": "^12.3",
+        "rappasoft/laravel-livewire-tables": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

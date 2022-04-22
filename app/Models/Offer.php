@@ -11,8 +11,9 @@ class Offer extends Model
    use HasFactory;
 
    protected $fillable=['offer_content','offer_hotel','offer_id',
-       'offer_nights','offer_rooms_quantity','offer_arrival_date',
-       'offer_price','offer_city'];
+       'offer_nights','offer_rooms_quantity','offer_room_class','offer_meals','offer_arrival_date',
+       'offer_price','user_id','offer_city'];
+
 
    public function user(){
        return $this->belongsTo(User::class);

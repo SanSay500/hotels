@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meal;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Offer;
@@ -14,7 +16,9 @@ class HomeController extends Controller
       'hotel' => 'required',
       'nights' => 'required|numeric',
       'arrivalDate' => 'required',
-      'rooms' => 'required|numeric',
+      'meals' => 'required',
+      'rooms' => 'required',
+      'room_class' => 'required',
       'city' => 'required',
       'price'=>'required|numeric|min:1'
     ];
@@ -47,16 +51,21 @@ class HomeController extends Controller
     }
 
     public function showAddOfferForm() {
-        return view('offer_add');
+        $rooms = Room::all();
+        $meals = Meal::all();
+        return view('offer_add',['rooms'=>$rooms, 'meals'=>$meals]);
     }
 
     public function storeOffer(Request $request) {
+
         $validated = $request->validate(self::OFFER_VALIDATOR, self::OFFER_ERROR_MESSAGES);
         Auth::user()->offers()->create(
                ['offer_content'=>$validated['content'],
                 'offer_hotel'=>$validated['hotel'],
                 'offer_nights'=>$validated['nights'],
                 'offer_rooms_quantity'=>$validated['rooms'],
+                'offer_room_class'=>$validated['room_class'],
+                'offer_meals'=>$validated['meals'],
                 'offer_arrival_date'=>$validated['arrivalDate'],
                 'offer_city'=>$validated['city'],
                 'offer_price'=>$validated['price']

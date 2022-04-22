@@ -23,6 +23,8 @@ class OfferFactory extends Factory
         'offer_nights'=>$this->faker->numberBetween(1,30),
         'offer_arrival_date'=>$this->faker->dateTimeThisYear,
         'offer_city'=>$this->faker->city(),
+        'offer_meals'=>$this->faker->randomElement(['RO', 'BB', 'HB', 'FB', 'AI']),
+        'offer_room_class'=>$this->faker->randomElement(['Superior', 'Standart']),
         'user_id'=>$this->faker->numberBetween(1,7),
         'offer_rooms_quantity'=>$this->faker->numberBetween(1,100)
         ];

@@ -9,9 +9,9 @@ h3{
     font-size: 24px;
 }
 .card-label {
-    font-size: 20px;
+    font-size: 28px;
     vertical-align: middle;
-    line-height: 22px;
+    line-height: 30px;
 }
 .form-check {
     display: flex !important;
@@ -24,7 +24,7 @@ h3{
     margin-right: 15px!important;
 }
 .btn-login{
-    font-size: 20px;
+    font-size: 24px;
     padding: 5px 15px;
 }
 .btn:hover{
@@ -33,7 +33,7 @@ h3{
     border-color: #0d6efd;
 }
 .btn-forget{
-    font-size: 18px;
+    font-size: 24px;
     color:#212529;
     text-decoration: none;
     padding-left: 20px;
@@ -77,13 +77,14 @@ h3{
     border-color: #0d6efd;
 }
 .btn{
-    font-size: 1em;
+    font-size: 28px;
     padding: 5px 10px;
 }
 .btn-container{
     display: flex;
     align-items: center;
     font-size: 18px;
+    justify-content: space-between;
 }
 .back-btn{
     margin-right: 10px;
@@ -92,8 +93,11 @@ h3{
     padding-top: 15px;
     padding-bottom: 25px;
 }
-.reserve, .user-profile__edit, .user-profile, .login-form, .register-form, .hotel-detail, .offer__delete, .offer__edit ,.profile,.order-history, .offer__add{
+.reserve, .user-profile__edit, .user-profile, .register-form, .hotel-detail, .offer__delete, .offer__edit ,.profile,.order-history, .offer__add{
     font-size: 20px;
+}
+.login-form{
+    font-size: 22px;
 }
 .info-label{
     font-weight: 600;
@@ -123,7 +127,7 @@ h3{
     width:100%;
     height: 100%;
     fill:#9fc5ff;
-    
+
 }
 .img-btn{
     width: 22px;
@@ -136,6 +140,9 @@ h3{
 .table th:hover{
     color: #0d6efd;
     cursor: pointer;
+}
+.table tr{
+    border-bottom: 1px solid #6c757d;
 }
 .link-container{
     display: flex;
@@ -156,6 +163,25 @@ h3{
     padding: 25px 25px 25px 40px;
     margin-bottom: 0;
 }
+.login-form{
+    padding-bottom: 25px;
+}
+
+.arrow-btn{
+    background-color: #0d6efd;
+    border: 1px solid #0d6efd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrow-btn:hover{
+    background-color: #fff;
+}
+.arrow-icon{
+    fill: #fff;
+}
+
 @media(max-width: 1024px){
     .btn-forget{
         font-size: 16px;
@@ -177,6 +203,9 @@ h3{
     }
     .table>:not(caption)>*>*{
         padding-left: 0;
+    }
+    .colum-md, .info-for-agent{
+        width: 75%;
     }
 }
 @media(max-width: 767px){
@@ -207,7 +236,7 @@ h3{
         font-size: 20px;
     }
     .card-label {
-        font-size: 16px;
+        font-size: 24px;
     }
     .offer-table h3{
         font-size: 14px;
@@ -223,7 +252,7 @@ h3{
     }
 }
 @media (max-width: 450px){
-    
+
     h3{
         font-size: 12px;
     }
@@ -243,6 +272,9 @@ h3{
     }
     .filter .form-control{
         flex: 2;
+    }
+    .colum-md, .info-for-agent{
+        width: 100%;
     }
     .offer-label{
         flex: 1;

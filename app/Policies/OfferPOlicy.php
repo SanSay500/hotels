@@ -3,9 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Offer;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OfferPOlicy
+class OfferPolicy
 {
     use HandlesAuthorization;
 
@@ -18,4 +19,14 @@ class OfferPOlicy
     {
         //
     }
+
+    public function update(User $user, Offer $offer){
+        return $offer->user_id === $user->id;
+    }
+
+    public function delete(User $user, Offer $offer){
+        return $this->update($user, $offer);
+    }
+
+
 }

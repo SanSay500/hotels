@@ -64,11 +64,13 @@
             @enderror
         </div>
         <br>
-        <div class="btn-container"><a href="/home" class="more-btn back-btn">Back</a>
-        <input type="submit" class="btn btn-primary" value="Save"></div>
+        <div class="btn-container" >
+        <input type="submit" class="more-btn back-btn" value="Save">
+            <a href="/home" class="more-btn" >Back</a>
+        </div>
     </form>
     </div>
 </section>
-    
+
 
 @endsection

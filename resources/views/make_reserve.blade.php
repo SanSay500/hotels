@@ -14,8 +14,6 @@
     <p><span class="info-label">Nights:</span> {{$offer->offer_nights}}</p>
     <p><span class="info-label">Price:</span> {{$offer->offer_price}}</p>
     <p><span class="info-label">Published by:</span> {{$offer->user->name}}</p>
-    <p><span class="info-label">Phone:</span> {{$offer->user->phone}}</p>
-    <p><span class="info-label">E-mail:</span> {{$offer->user->email}}</p>
     <p><span class="info-label">Rooms available:</span> {{$offer->offer_rooms_quantity}}</p>
     <label for="txtRooms" class="info-label">Rooms to reserve:
     <input size="2" name="rooms" id="txtRooms"
@@ -24,8 +22,8 @@
     <input type="submit" class="btn btn-primary" value="Reserve">
     </form>
     </div>
-    
+
 </section>
-    
+
 
 @endsection

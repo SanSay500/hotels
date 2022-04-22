@@ -5,8 +5,9 @@
 @section('main')
 <section class="login-form">
 <div class="container">
+
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 colum-md">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -15,7 +16,7 @@
                         @csrf
 
                         <div class="row mb-3 align-items-center">
-                            <label for="email" class="col-md-4 text-md-end card-label">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 text-md-end card-label">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

@@ -17,7 +17,7 @@
            <thead>
               <tr>
                   <th>Hotel</th>
-                  <th class="coldn">City</th>
+                  <th class="col22">City</th>
                   <th>Arrival Date</th>
                   <th>Nights</th>
                   <th>Rooms quantity</th>
@@ -29,7 +29,7 @@
            @foreach($offers as $offer)
                <tr>
                    <td><h3>{{$offer->offer_hotel}}</h3></td>
-                   <td class="coldn"><h3>{{$offer->offer_city}}</h3></td>
+                   <td class="col22"><h3>{{$offer->offer_city}}</h3></td>
                    <td><h3>{{$offer->offer_arrival_date}}</h3></td>
                    <td><h3>{{$offer->offer_nights}}</h3></td>
                    <td><h3>{{$offer->offer_rooms_quantity}}</h3></td>

@@ -15,13 +15,13 @@ class OffersController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+
     }
 
     public function index()
     {
-       $offers = Offer::paginate(3);
-       return view('index', ['offers'=>$offers]);
+       //$offers = Offer::all();
+       return view('index');//, ['offers'=>$offers]);
     }
 
     public function detail(Offer $offer){

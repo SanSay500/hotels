@@ -61,6 +61,25 @@
             </span>
             @enderror
         </div>
+        <div class="form-group">
+            <label for="txtRooms">Rooms class</label>
+            <select name="room_class" class="form-control">
+                @foreach ($rooms as $room)
+                    <option>{{ $room->room_class }} </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="txtRooms">Meals</label>
+            <select name="meals" class="form-control">
+                @foreach ($meals as $meal)
+                <option>{{ $meal->meals }} </option>
+                @endforeach
+            </select>
+            </span>
+        </div>
+
 
         <div class="form-group">
             <label for="txtContent">City</label>
@@ -85,12 +104,12 @@
         </div>
         <br>
         <div class="btn-container"><a class="more-btn back-btn" href="/home">Back</a>
-        <input type="submit" class="btn btn-primary off-add" value="Add "> </div>
+        <input type="submit" class="more-btn back-btn" value="Add "> </div>
     </form>
     <br>
-    
+
     </div>
 </section>
-    
+
 
 @endsection

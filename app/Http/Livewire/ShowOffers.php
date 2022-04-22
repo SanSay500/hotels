@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Offer;
+use Livewire\WithPagination;
 
 class ShowOffers extends Component
 {
+    use WithPagination;
+
     /**
      * @var $offers
      */
@@ -23,7 +26,7 @@ class ShowOffers extends Component
     /**
      * @var int
      */
-    public $perPage = 15;
+    public $perPage = 10;
     /**
      * @var string
      */
@@ -43,7 +46,7 @@ class ShowOffers extends Component
      */
     public function loadMore()
     {
-        $this->perPage += 3;
+        $this->perPage += 10;
     }
 
     /**
@@ -115,6 +118,24 @@ class ShowOffers extends Component
 //     * Render our component
 //     *
 //     */
+//    public function loadPosts()
+//    {
+//        if ($this->hasMorePages !== null  && !$this->hasMorePages) {
+//            return;
+//        }
+//
+//        $posts = Offer::cursorPaginate(
+//            15,
+//            ['*'],
+//            'cursor',
+//            Cursor::fromEncoded($this->nextCursor)
+//        );
+//        $this->posts->push(...$posts->items());
+//        $this->hasMorePages = $posts->hasMorePages();
+//        if ($this->hasMorePages === true) {
+//            $this->nextCursor = $posts->nextCursor()->encode();
+//        }
+//    }
 //
 
 }

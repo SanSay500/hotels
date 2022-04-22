@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -14,6 +15,9 @@
             <nav class="navbar navbar-light">
                 <a href="{{route('index')}}"
                     class="nav-item nav-link"> Main Page </a>
+
+                <a href="{{ route('feedback.form') }}"
+                class="nav-item nav-link ">Feedback</a>
                 @guest
                 <a href="{{ route('register') }}"
                 class="nav-item nav-link ">Register</a>
@@ -26,13 +30,13 @@
                 <form action="{{ route('logout') }}" method="POST"
                     class="form-inline">
                     @csrf
-                    <input type="submit" class="btn btn-danger"
+                    <input type="submit" class="nav-item nav-link" style="border: none; background: transparent;"
                         value="Logout">
                 </form>
                 @endauth
             </nav>
 
-            
+
         </div>
     </header>
     <section class="title">
