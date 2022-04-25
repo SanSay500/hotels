@@ -16,11 +16,11 @@
        <table class="table table-stripped">
            <thead>
               <tr>
+                  <th>Date</th>
+                  <th>Nights</th>
                   <th>Hotel</th>
                   <th class="col22">City</th>
-                  <th>Arrival Date</th>
-                  <th>Nights</th>
-                  <th>Rooms quantity</th>
+                  <th>Rooms</th>
                   <th>Price</th>
                   <th colspan="2">&nbsp;</th>
               </tr>
@@ -28,10 +28,10 @@
            <tbody>
            @foreach($offers as $offer)
                <tr>
-                   <td><h3>{{$offer->offer_hotel}}</h3></td>
-                   <td class="col22"><h3>{{$offer->offer_city}}</h3></td>
-                   <td><h3>{{$offer->offer_arrival_date}}</h3></td>
+                   <td><h3>{{\Carbon\Carbon::parse($offer->offer_arrival_date)->format('j.M Y')}}</h3></td>
                    <td><h3>{{$offer->offer_nights}}</h3></td>
+                   <td>{{$offer->offer_hotel}}</td>
+                   <td class="col22"><h3>{{$offer->offer_city}}</h3></td>
                    <td><h3>{{$offer->offer_rooms_quantity}}</h3></td>
                    <td><h3>{{$offer->offer_price}}</h3></td>
                    <td><a class="more-btn" href="{{route('offer.editForm', ['offer'=>$offer->id])}}">Change</a></td>
@@ -43,5 +43,5 @@
     @endif
     </div>
 </section>
-    
+
 @endsection

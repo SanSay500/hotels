@@ -1,8 +1,49 @@
 <section class="hotels">
+    <style>
+        /* arrow common style */
+        .div-login {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .div-btn-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .div-btn-right {
+            display: flex;
+            justify-content: right;
+        }
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            justify-content: center;
+        }
+        .offer-table td{
+            font-size: 16px;
+        }
+        .offer-table th{
+            font-size: 16px;
+        }
+        .arrow {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #000;
+            border-right: 2px solid #000;
+        }
+
+        .arrow-right {
+            transform: rotate(45deg);
+        }
+    </style>
     <div class="container">
         @guest
             <div class="info-for-agent">
                 <ul class="info-list">
+                    <h2 align="center">Dear Agent!</h2>
                     <li class="info-item">Before using our service, try to negotiate a refund for your canceled bookings
                         directly with the hotel.
                     </li>
@@ -20,19 +61,21 @@
         @endguest
         <div class="filter-container">
             <div class="filter filter-city">
-                <label for="filter-city" class="card-label offer-label">{{ __('Filter by city') }}</label>
+                <label for="filter-city" class="card-label offer-label">{{ __('Filter by City') }}</label>
                 <input wire:model="filters.offer_city" type="text" class="form-control" id="filter-city"
                        placeholder="Enter city">
             </div>
             <div class="filter filter-hotel">
-                <label for="filter-hotel" class="card-label offer-label">{{ __('Filter by hotel') }}</label>
+                <label for="filter-hotel" class="card-label offer-label">{{ __('Filter by Hotel') }}</label>
                 <input wire:model="filters.offer_hotel" type="text" class="form-control" id="filter-hotel"
                        placeholder="Enter hotel">
             </div>
             <div class="filter filter-date">
-                <label for="filter-date" class="card-label offer-label">{{ __('Filter by date') }}</label>
-                <input wire:model="filters.offer_arrival_date" type="date" class="form-control" id="filter-date"
+                <label for="filter-date" class="card-label offer-label">{{ __('Date from') }}</label>
+                <input wire:model="filtersDate.offer_arrival_date" min="<?php echo date("Y-m-d"); ?>" type="date"
+                       class="form-control" id="filter-date"
                        placeholder="Enter date">
+
             </div>
         </div>
         <table class="table table-stripepd offer-table">
@@ -50,13 +93,13 @@
                     @endif
                     Nights
                 </th>
-                <th wire:click="sortFields('offer_hotel')">
+                <th style="text-align: center" wire:click="sortFields('offer_hotel')">
                     @if ($orderBy == 'offer_hotel')
                         {{$orderAsc ? '▲' : '▼'}}
                     @endif
                     Hotel
                 </th>
-                <th wire:click="sortFields('offer_city')">
+                <th @if((new \Jenssegers\Agent\Agent())->isMobile()) hidden @endif style="text-align: center" wire:click="sortFields('offer_city')">
                     @if ($orderBy == 'offer_city')
                         {{$orderAsc ? '▲' : '▼'}}
                     @endif
@@ -79,29 +122,52 @@
             <tbody>
             @foreach($offers as $offer)
                 <tr>
-                    <td style="white-space:nowrap">{{\Carbon\Carbon::parse($offer->offer_arrival_date)->format('j M `y') }}</td>
-                    <td  style="text-align: center">{{$offer->offer_nights}}</td>
-                    <td >{{$offer->offer_hotel}}</td>
-                    <td >{{$offer->offer_city}}</td>
-                    <td>{{$offer->offer_price}}</td>
+                    <td style="white-space:pre-line">{{\Carbon\Carbon::parse($offer->offer_arrival_date)->format('j.M Y') }}</td>
+                    <td style="text-align: center">{{$offer->offer_nights}}</td>
+                    <td>{{$offer->offer_hotel}} @if((new \Jenssegers\Agent\Agent())->isMobile()) (<b>{{$offer->offer_city}}</b>)@endif</td>
+                    <td @if((new \Jenssegers\Agent\Agent())->isMobile()) hidden @endif><b>{{$offer->offer_city}}</b>   </td>
+                    <td>{{$offer->offer_price}}₪</td>
                     <td style="text-align: center">{{$offer->offer_rooms_quantity}}</td>
                     <td>
-                        <a class="img-btn arrow-btn" href="{{route('detail',['offer'=>$offer->id])}}">
-                            <svg class="img-icon arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                <path
-                                    d="M374.6 310.6l-160 160C208.4 476.9 200.2 480 192 480s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 370.8V64c0-17.69 14.33-31.1 31.1-31.1S224 46.31 224 64v306.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0S387.1 298.1 374.6 310.6z"/>
-                            </svg>
+                        <a class="arrow arrow-right" href="{{route('detail',['offer'=>$offer->id])}}">
                         </a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+
             @if($offers->hasMorePages())
-                <div align="center"><button class="btn btn-primary" wire:click.prevent="loadMore">Load more</button></div>
-            @endif
-{{--        <div align="center">{{ $offers->links() }}</div>--}}
-    </div>
+                @if((new \Jenssegers\Agent\Agent())->isMobile())
+                    @guest
+                <div class="div-login">
+
+                        <div>
+                            <a href="{{ route('login') }}">Login</a>/
+                            <a href="{{ route('register') }}">Sign Up </a>&nbspto see <br>
+                            more offers information
+                        </div>
+                    @endguest
+                    <div class="div-btn-right">
+                        <button class="btn btn-primary" wire:click.prevent="loadMore">Show more</button>
+                    </div>
+                </div>
+
+                @else
+                    <div class="div-btn-center">
+                        <button class="btn btn-primary" wire:click.prevent="loadMore">Show more</button>
+                    </div>
+                <br>
+                    @guest
+                        <div class="div-btn-center">
+                            <a href="{{ route('login') }}">Login</a>/
+                            <a href="{{ route('register') }}">Sign Up</a>&nbspto see
+                            more offers information
+                        </div>
+                   @endguest
+    @endif
+    @endif
+
 </section>
 
 

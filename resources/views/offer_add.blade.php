@@ -9,7 +9,7 @@
         @csrf
         <div class="form-group">
             <label for="txtArrivalDate">Arrival Date</label>
-            <input name="arrivalDate" type="date" id="txtArrivalDate" class="form-control
+            <input name="arrivalDate" type="date" min="<?php echo date("Y-m-d"); ?>" id="txtArrivalDate" class="form-control
                    @error ('arrivalDate') is-invalid @enderror" value="{{ old('arrivalDate') }}">
             @error ('arrivalDate')
             <span class="invalid-feedback">

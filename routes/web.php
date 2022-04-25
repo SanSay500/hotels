@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/datatables', function () {
+//    return view('livewire/offer-datatables');
+//});
+
 Route::get('/card', function () {
-    return view('card');
+    return view('livewire.counter');
 });
 Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'showFeedbackForm'])->name('feedback.form');
 Route::patch('/profile/{user}', [App\Http\Controllers\UserController::class, 'updateUser'])->name('profile.update')->middleware(['auth','can:update,user']);

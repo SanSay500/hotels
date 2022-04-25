@@ -7,6 +7,8 @@ use Livewire\Component;
 use App\Models\Offer;
 use Livewire\WithPagination;
 
+
+
 class ShowOffers extends Component
 {
     use WithPagination;
@@ -19,6 +21,8 @@ class ShowOffers extends Component
      * @var array
      */
     public $filters=[];
+    public $filtersDate=[];
+
     /**
      * @var bool
      */
@@ -61,7 +65,9 @@ class ShowOffers extends Component
      */
     public function render()
     {
+
         $this->offers = Offer::query()->where('offer_rooms_quantity','>',0)
+            ->where('offer_arrival_date','>', now())
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc');
 
         if(!empty($this->filters)){
@@ -72,70 +78,13 @@ class ShowOffers extends Component
             $this->offers = $this->offers->where($key,'like', "%{$value}%");
             }
         }
+        if(!empty($this->filtersDate)) {
+            foreach ($this->filtersDate as $key => $value) {
+                $this->offers = $this->offers->where($key, '>=', "{$value}");
+            }
+        }
         $this->offers=$this->offers->cursorPaginate($this->perPage);
         return view('livewire.show-offers', ['offers'=>$this->offers]);
     }
-
-//
-//    public $posts; // holds are list of posts.
-//    public $nextCursor; // holds our current page position.
-//    public $hasMorePages; // Tells us if we have more pages to paginate.
-//
-//    /**
-//     * Initialize data
-//     * @return void
-//     */
-//    public function mount()
-//    {
-//        $this->posts = new Collection(); // initialize the data
-//        $this->loadPosts(); // load the data
-//    }
-//
-//    /**
-//     * Load data and maintain cursor state
-//     *
-//     */
-//    public function loadPosts()
-//    {
-//        if ($this->hasMorePages !== null  && !$this->hasMorePages) {
-//            return;
-//        }
-//
-//        $posts = Offer::cursorPaginate(
-//            15,
-//            ['*'],
-//            'cursor',
-//            Cursor::fromEncoded($this->nextCursor)
-//        );
-//        $this->posts->push(...$posts->items());
-//        $this->hasMorePages = $posts->hasMorePages();
-//        if ($this->hasMorePages === true) {
-//            $this->nextCursor = $posts->nextCursor()->encode();
-//        }
-//    }
-//
-//    /**
-//     * Render our component
-//     *
-//     */
-//    public function loadPosts()
-//    {
-//        if ($this->hasMorePages !== null  && !$this->hasMorePages) {
-//            return;
-//        }
-//
-//        $posts = Offer::cursorPaginate(
-//            15,
-//            ['*'],
-//            'cursor',
-//            Cursor::fromEncoded($this->nextCursor)
-//        );
-//        $this->posts->push(...$posts->items());
-//        $this->hasMorePages = $posts->hasMorePages();
-//        if ($this->hasMorePages === true) {
-//            $this->nextCursor = $posts->nextCursor()->encode();
-//        }
-//    }
-//
 
 }

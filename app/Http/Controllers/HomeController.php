@@ -73,7 +73,9 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
     public function showEditOfferForm(Offer $offer){
-        return view ('offer_edit', ['offer'=>$offer]);
+        $rooms = Room::all();
+        $meals = Meal::all();
+        return view ('offer_edit', ['offer'=>$offer, 'rooms'=>$rooms, 'meals'=>$meals]);
     }
 
     public function updateOffer(Request $request, Offer $offer){
@@ -84,6 +86,8 @@ class HomeController extends Controller
                      'offer_hotel'=>$validated['hotel'],
                      'offer_nights'=>$validated['nights'],
                      'offer_rooms_quantity'=>$validated['rooms'],
+                     'offer_room_class'=>$validated['room_class'],
+                     'offer_meals'=>$validated['meals'],
                      'offer_arrival_date'=>$validated['arrivalDate'],
                      'offer_city'=>$validated['city'],
                      'offer_price'=>$validated['price']

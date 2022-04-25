@@ -64,6 +64,36 @@
         </div>
 
         <div class="form-group">
+            <label for="txtRooms">Rooms class</label> now set: {{$offer->offer_room_class}}
+            <select name="room_class" class="form-control">
+                @foreach ($rooms as $room)
+                      <option
+                          @if ($room->room_class === $offer->offer_room_class)
+                                  selected
+                          @endif
+                      >
+                          {{ $room->room_class }}
+                      </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="txtMeals">Meals class</label> now set: {{$offer->offer_meals}}
+            <select name="meals" class="form-control">
+                @foreach ($meals as $meal)
+                    <option
+                        @if ($meal->meals === $offer->offer_meals)
+                            selected
+                        @endif
+                    >
+                        {{ $meal->meals }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="txtCity">City</label>
             <input name="city" id="txtCity"
                    class="form-control @error ('city') is-invalid @enderror" value="{{ old('city', $offer->offer_city) }}">
