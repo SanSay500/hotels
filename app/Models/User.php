@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Orchid\Platform\Models\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Orchid\Screen\AsSource;
-use Orchid\Filters\Filterable;
-use Orchid\Attachment\Attachable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
-    use AsSource, Filterable, Attachable, Notifiable;
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
+    use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,9 +22,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'company',
         'description',
         'country',
+        'points',
         'role',
+        'notif_ids',
         'password',
         'permissions',
+        'email_verified_at'
     ];
 
     /**
@@ -56,7 +57,6 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $allowedFilters = [
-        'id',
         'name',
         'email',
         'permissions',
@@ -74,7 +74,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'updated_at',
         'created_at',
     ];
-    public function offers() {
+
+    public function offers(){
         return $this->hasMany(Offer::class);
     }
 }

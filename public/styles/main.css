@@ -2,6 +2,26 @@ h1{
     background: url("/images/logo.webp") left / auto 100% no-repeat,
     url("/images/flag-Israel.png") right / auto 100% no-repeat;
 }
+
+.picture-log{
+    max-width:48px;
+    max-height: 48px;
+}
+.picture-log img {
+    height: 100%;
+    width: 100%;
+}
+
+.under-header-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.responsive {
+    width: 20%;
+    height: auto;
+}
+
 h3{
     font-size: 24px;
 }
@@ -33,7 +53,8 @@ h3{
     border-color: #0d6efd;
 }
 .btn-forget{
-    font-size: 24px;
+    font-size: 18px;
+    font-size: 18px;
     color:#212529;
     text-decoration: none;
     padding-left: 20px;

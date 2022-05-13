@@ -31,15 +31,15 @@ Auth::routes(['verify' => true]);
 Route::get('/',[OffersController::class, 'index'])->name('index');
 Auth::routes();
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'showUserForm'])->name('user.profile');
-Route::get('/profile/{user}/edit', [App\Http\Controllers\UserController::class, 'editUserForm'])->name('user.profile.edit')->middleware('can:update,user');;
+Route::get('/profile/{user}/edit', [App\Http\Controllers\UserController::class, 'editUserForm'])->name('user.profile.edit')->middleware('can:update,user');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/add', [App\Http\Controllers\HomeController::class, 'showAddOfferForm'])->name('offer.add');
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'storeOffer'])->name('offer.store')->middleware('verified');;
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'storeOffer'])->name('offer.store')->middleware('verified');
 Route::get('/home/{offer}/edit', [App\Http\Controllers\HomeController::class, 'showEditOfferForm'])->name('offer.editForm')->middleware('can:update,offer');
 Route::delete('/home/{offer}', [App\Http\Controllers\HomeController::class, 'deleteOffer'])->name('offer.destroy')->middleware('can:delete,offer');
 Route::get('/{offer}',[OffersController::class,'detail'])->name('detail');
 Route::get('/home/{offer}/delete', [App\Http\Controllers\HomeController::class, 'showDeleteOfferForm'])->name('offer.deleteForm')->middleware('can:delete,offer');
-Route::get('/reserve/{offer}', [App\Http\Controllers\OffersController::class, 'showReserveForm'])->name('reserveOffer.form');
+Route::get('/reserve/{offer}', [App\Http\Controllers\OffersController::class, 'showReserveForm'])->name('reserveOffer.form')->middleware('verified');;
 Route::get('/home/history', [App\Http\Controllers\OrderController::class, 'history'])->name('order.history')->middleware('auth');
 Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'sendQuestion'])->name('feedback.send');
 

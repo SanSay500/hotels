@@ -10,7 +10,6 @@ class UserController extends Controller
     private const USER_VALIDATOR = [
         'name' => 'required',
         'phone' => 'required|numeric',
-        'country' => 'required',
         'description' => '',
         'company' => 'required',
     ];
@@ -25,15 +24,15 @@ class UserController extends Controller
     }
 
     public function updateUser(Request $request, User $user){
-
+       
         $validated = $request->validate(self::USER_VALIDATOR,
             self::USER_ERROR_MESSAGES);
 
-        $user->fill([   'name'=>$validated['name'],
+        $user->fill(['name'=>$validated['name'],
                 'company'=>$validated['company'],
-                'country'=>$validated['country'],
                 'description'=>$validated['description'],
-                'phone'=>$validated['phone']
+                'phone'=>$validated['phone'],
+                'notif_ids'=> isset($request['notifications']) ? 1 : 0,
             ]);
         $user->save();
         return redirect()->route('user.profile');

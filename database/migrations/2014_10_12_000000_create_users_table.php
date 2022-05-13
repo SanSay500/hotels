@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('password');
             $table->smallInteger('points')->nullable();
             $table->string('role')->nullable();
+            $table->time('notif_time')->nullable();
+            $table->boolean('notif_ids')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

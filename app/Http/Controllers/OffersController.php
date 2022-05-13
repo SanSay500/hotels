@@ -50,11 +50,10 @@ class OffersController extends Controller
             'seller_id'=>$offer->user_id,
             'buyer_id'=>Auth::user()->id
         ]);
+
         Mail::to($offer->user->email)->send(new NewReservationAgent($offer, $rooms));
         Mail::to(Auth::user()->email)->send(new NewReservationClient($offer, $rooms));
         return view ('reserv_done');
-
-
     }
 
 }

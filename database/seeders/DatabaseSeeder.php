@@ -21,8 +21,12 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory(7)->create();
          \App\Models\Offer::factory(30)->create();
          Order::factory(30)->create();
-//         Room::factory(2)->create();
-//         Meal::factory(5)->create();
+
+        $this->call([
+            CitySeeder::class,
+            HotelSeeder::class,
+        ]);
+
          DB::table('rooms')->insert(values: [
              'room_class'=>'Standart'
         ]);

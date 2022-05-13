@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "backpack/crud": "^5.0",
         "doctrine/dbal": "^3.3",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.5.4",
@@ -16,11 +17,10 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.10",
-        "orchid/crud": "^3.6",
-        "orchid/platform": "^12.3",
-        "rappasoft/laravel-livewire-tables": "^2.1"
+        "orchid/crud": "^3.6"
     },
     "require-dev": {
+        "backpack/generators": "^3.1",
         "barryvdh/laravel-debugbar": "^3.6",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
@@ -67,5 +67,11 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "backpack/devtools": {
+            "type": "composer",
+            "url": "https://repo.backpackforlaravel.com"
+        }
+    }
 }

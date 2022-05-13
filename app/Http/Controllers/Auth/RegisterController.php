@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'company' => $data['company'],
             'description' => $data['description'],
             'role' => $data['role'],
+            'notif_ids' => isset($data['notifications']) ? 1 : 0,
             'password' => Hash::make($data['password']),
         ]);
     }

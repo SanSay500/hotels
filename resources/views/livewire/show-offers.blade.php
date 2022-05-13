@@ -1,6 +1,9 @@
 <section class="hotels">
     <style>
         /* arrow common style */
+        .dear {
+            font-size: 20px !important;
+        }
         .div-login {
             display: flex;
             align-items: center;
@@ -43,7 +46,7 @@
         @guest
             <div class="info-for-agent">
                 <ul class="info-list">
-                    <h2 align="center">Dear Agent!</h2>
+                    <h3 class="dear">Dear Agent,</h3>
                     <li class="info-item">Before using our service, try to negotiate a refund for your canceled bookings
                         directly with the hotel.
                     </li>
@@ -122,11 +125,11 @@
             <tbody>
             @foreach($offers as $offer)
                 <tr>
-                    <td style="white-space:pre-line">{{\Carbon\Carbon::parse($offer->offer_arrival_date)->format('j.M Y') }}</td>
+                    <td style="white-space: pre-line">{{\Carbon\Carbon::parse($offer->offer_arrival_date)->format('j.m Y')}}</td>
                     <td style="text-align: center">{{$offer->offer_nights}}</td>
                     <td>{{$offer->offer_hotel}} @if((new \Jenssegers\Agent\Agent())->isMobile()) (<b>{{$offer->offer_city}}</b>)@endif</td>
                     <td @if((new \Jenssegers\Agent\Agent())->isMobile()) hidden @endif><b>{{$offer->offer_city}}</b>   </td>
-                    <td>{{$offer->offer_price}}₪</td>
+                    <td>₪{{$offer->offer_price}}</td>
                     <td style="text-align: center">{{$offer->offer_rooms_quantity}}</td>
                     <td>
                         <a class="arrow arrow-right" href="{{route('detail',['offer'=>$offer->id])}}">
@@ -141,11 +144,10 @@
                 @if((new \Jenssegers\Agent\Agent())->isMobile())
                     @guest
                 <div class="div-login">
-
                         <div>
-                            <a href="{{ route('login') }}">Login</a>/
-                            <a href="{{ route('register') }}">Sign Up </a>&nbspto see <br>
-                            more offers information
+                            <a href="{{ route('register') }}">Sign up&nbsp </a>/
+                            <a href="{{ route('login') }}">&nbspLogin&nbsp</a><br>to see
+                            more options
                         </div>
                     @endguest
                     <div class="div-btn-right">
@@ -160,9 +162,9 @@
                 <br>
                     @guest
                         <div class="div-btn-center">
-                            <a href="{{ route('login') }}">Login</a>/
-                            <a href="{{ route('register') }}">Sign Up</a>&nbspto see
-                            more offers information
+                            <a href="{{ route('register') }}">Sign up&nbsp </a>/
+                            <a href="{{ route('login') }}">&nbspLogin&nbsp</a>to see
+                            more options
                         </div>
                    @endguest
     @endif

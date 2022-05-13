@@ -74,7 +74,7 @@
                                 <label for="country" class="col-md-4 text-md-end card-label">{{ __('Country') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required autocomplete="country" autofocus>
+                                    <input readonly id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="Israel" required autocomplete="country" autofocus>
 
                                     @error('country')
                                     <span class="invalid-feedback" role="alert">

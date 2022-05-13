@@ -32,17 +32,6 @@
         </div>
 
         <div class="form-group">
-            <label for="txtcountry">Country</label>
-            <input name="country" id="txtcountry" class="form-control
-                   @error ('country') is-invalid @enderror" value="{{ old('country',Auth::user()->country) }}">
-            @error ('country')
-            <span class="invalid-feedback">
-            <strong>{{$message}}</strong>
-        </span>
-            @enderror
-        </div>
-
-        <div class="form-group">
             <label for="txtdescription">Description</label>
             <input name="description" id="txtdescription" class="form-control
                    @error ('description') is-invalid @enderror" value="{{ old('description',Auth::user()->description) }}">
@@ -63,6 +52,12 @@
         </span>
             @enderror
         </div>
+
+        <div>
+            {{ __('Get Notifications') }}: &nbsp<input type="checkbox" id="notifications" name="notifications" {{Auth::user()->notif_ids ? 'checked' : ''}}>
+        </div>
+
+
         <br>
         <div class="btn-container" >
         <input type="submit" class="more-btn back-btn" value="Save">

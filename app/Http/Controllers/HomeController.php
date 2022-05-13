@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Meal;
 use App\Models\Room;
+use App\Notifications\GotNewOffer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Offer;
 use App\Models\User;
+use App\Models\City;
+use App\Models\Hotel;
+use Illuminate\Support\Facades\Notification;
 
 class HomeController extends Controller
 {
@@ -53,23 +57,30 @@ class HomeController extends Controller
     public function showAddOfferForm() {
         $rooms = Room::all();
         $meals = Meal::all();
-        return view('offer_add',['rooms'=>$rooms, 'meals'=>$meals]);
+        $cities = City::all();
+        $hotels = Hotel::all();
+        return view('offer_add',['rooms'=>$rooms, 'meals'=>$meals, 'cities'=>$cities, 'hotels'=>$hotels]);
     }
 
     public function storeOffer(Request $request) {
 
         $validated = $request->validate(self::OFFER_VALIDATOR, self::OFFER_ERROR_MESSAGES);
+        $users = User::where('notif_ids', 1)->get();
+        $city = City::where('id',$request['city'])->first()->name;
+        $hotel = Hotel::where('id',$request['hotel'])->first()->name;
         Auth::user()->offers()->create(
                ['offer_content'=>$validated['content'],
-                'offer_hotel'=>$validated['hotel'],
+                'offer_hotel'=>$hotel,
                 'offer_nights'=>$validated['nights'],
                 'offer_rooms_quantity'=>$validated['rooms'],
                 'offer_room_class'=>$validated['room_class'],
                 'offer_meals'=>$validated['meals'],
                 'offer_arrival_date'=>$validated['arrivalDate'],
-                'offer_city'=>$validated['city'],
+                'offer_city'=>$city,
                 'offer_price'=>$validated['price']
         ]);
+        $offer = Offer::get()->last()->id;
+        Notification::send($users, new GotNewOffer($city, $hotel, $offer));
         return redirect()->route('home');
     }
     public function showEditOfferForm(Offer $offer){
@@ -81,6 +92,7 @@ class HomeController extends Controller
     public function updateOffer(Request $request, Offer $offer){
         $validated = $request->validate(self::OFFER_VALIDATOR,
                                      self::OFFER_ERROR_MESSAGES);
+
         $offer->fill(
                     ['offer_content'=>$validated['content'],
                      'offer_hotel'=>$validated['hotel'],

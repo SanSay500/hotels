@@ -83,7 +83,7 @@ class ShowOffers extends Component
                 $this->offers = $this->offers->where($key, '>=', "{$value}");
             }
         }
-        $this->offers=$this->offers->cursorPaginate($this->perPage);
+        $this->offers=$this->offers->paginate($this->perPage);
         return view('livewire.show-offers', ['offers'=>$this->offers]);
     }
 
