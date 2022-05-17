@@ -6,7 +6,7 @@
 <p>Details of reserve:</p>
 <p>City: {{ $offer->offer_city }}</p>
 <p>Hotel: {{ $offer->offer_hotel }} </p>
-<p>Date of Arrival: {{ $offer->offer_arrival_date }}< </p>
+<p>Date of Arrival: {{ $offer->offer_arrival_date }} </p>
 <p>Price: {{ $offer->offer_price }} </p>
 <p>Rooms reserved: {{ $rooms}}</p>
 <p>Rooms left: {{ $offer->offer_rooms_quantity }}</p>

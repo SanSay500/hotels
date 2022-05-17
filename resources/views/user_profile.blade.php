@@ -15,6 +15,7 @@
     <p><span class="info-label">Points:</span> {{Auth::user()->points}}</p>
     <p><span class="info-label">Role:</span> {{Auth::user()->role}}</p>
     <p><span class="info-label">Notifications:</span> {{Auth::user()->notif_ids ? 'On' : 'Off'}} </p>
+    <p><span class="info-label">Show your contacts after reserve:</span> {{Auth::user()->private_policy ? 'On' : 'Off'}} </p>
     <div class="btn-container"><a href="/home" class="more-btn back-btn">Back</a><a class="more-btn" href="{{ route('user.profile.edit', ['user'=>Auth::user()->id]) }}">Edit</a>
             </div>
         </div>

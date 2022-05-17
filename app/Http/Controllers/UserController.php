@@ -24,7 +24,7 @@ class UserController extends Controller
     }
 
     public function updateUser(Request $request, User $user){
-       
+
         $validated = $request->validate(self::USER_VALIDATOR,
             self::USER_ERROR_MESSAGES);
 
@@ -33,6 +33,7 @@ class UserController extends Controller
                 'description'=>$validated['description'],
                 'phone'=>$validated['phone'],
                 'notif_ids'=> isset($request['notifications']) ? 1 : 0,
+                'private_policy'=> isset($request['private_policy']) ? 1 : 0,
             ]);
         $user->save();
         return redirect()->route('user.profile');

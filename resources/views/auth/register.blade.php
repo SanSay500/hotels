@@ -85,20 +85,6 @@
                             </div>
 
                             <div class="row mb-3 align-items-center">
-                                <label for="description" class="col-md-4 text-md-end card-label">{{ __('Description') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus>
-
-                                    @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 align-items-center">
                                 <label for="password" class="col-md-4 text-md-end card-label">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
@@ -133,6 +119,13 @@
                                     <div class="col-md-6">
                                     <input type="checkbox" id="notifications" name="notifications">
                                     </div>
+                            </div>
+
+                            <div class="row mb-3 align-items-center">
+                                <label for="private_policy" class="col-md-4 col-form-label text-md-end card-label">{{ __('Show your contacts after reserve') }}</label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" id="private_policy" name="private_policy">
+                                </div>
                             </div>
 
                             <div class="row mb-0">

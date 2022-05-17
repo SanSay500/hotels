@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Notification;
 class HomeController extends Controller
 {
     private const OFFER_VALIDATOR = [
-      'content' => 'required',
+      'content' => '',
       'hotel' => 'required',
       'nights' => 'required|numeric',
       'arrivalDate' => 'required',
@@ -69,7 +69,7 @@ class HomeController extends Controller
         $city = City::where('id',$request['city'])->first()->name;
         $hotel = Hotel::where('id',$request['hotel'])->first()->name;
         Auth::user()->offers()->create(
-               ['offer_content'=>$validated['content'],
+               ['offer_content' =>'',
                 'offer_hotel'=>$hotel,
                 'offer_nights'=>$validated['nights'],
                 'offer_rooms_quantity'=>$validated['rooms'],
@@ -80,7 +80,9 @@ class HomeController extends Controller
                 'offer_price'=>$validated['price']
         ]);
         $offer = Offer::get()->last()->id;
-        Notification::send($users, new GotNewOffer($city, $hotel, $offer));
+        //Notification::send($users, new GotNewOffer($city, $hotel, $offer));
+        //$notifJob = (new NotificationsJOb)->delay(now()->addSeconds(5));
+        //dispatch($notifJob);
         return redirect()->route('home');
     }
     public function showEditOfferForm(Offer $offer){

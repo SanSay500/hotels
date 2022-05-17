@@ -56,6 +56,9 @@
         <div>
             {{ __('Get Notifications') }}: &nbsp<input type="checkbox" id="notifications" name="notifications" {{Auth::user()->notif_ids ? 'checked' : ''}}>
         </div>
+        <div>
+            {{ __('Show your contacts after reserve') }}: &nbsp<input type="checkbox" id="private_policy" name="private_policy" {{Auth::user()->private_policy ? 'checked' : ''}}>
+        </div>
 
 
         <br>

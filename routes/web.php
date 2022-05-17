@@ -23,7 +23,6 @@ Route::get('/card', function () {
 });
 Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'showFeedbackForm'])->name('feedback.form');
 Route::patch('/profile/{user}', [App\Http\Controllers\UserController::class, 'updateUser'])->name('profile.update')->middleware(['auth','can:update,user']);
-Route::patch('/profile/{user}', [App\Http\Controllers\UserController::class, 'updateUser'])->name('profile.update')->middleware(['auth','can:update,user']);
 Route::patch('/home/reserve/{offer}', [App\Http\Controllers\OffersController::class, 'makeReserve'])->name('offer.reserve');
 Route::patch('/home/{offer}', [App\Http\Controllers\HomeController::class, 'updateOffer'])->name('offer.update')->middleware('can:update,offer');
 Auth::routes(['verify' => true]);
@@ -39,7 +38,10 @@ Route::get('/home/{offer}/edit', [App\Http\Controllers\HomeController::class, 's
 Route::delete('/home/{offer}', [App\Http\Controllers\HomeController::class, 'deleteOffer'])->name('offer.destroy')->middleware('can:delete,offer');
 Route::get('/{offer}',[OffersController::class,'detail'])->name('detail');
 Route::get('/home/{offer}/delete', [App\Http\Controllers\HomeController::class, 'showDeleteOfferForm'])->name('offer.deleteForm')->middleware('can:delete,offer');
-Route::get('/reserve/{offer}', [App\Http\Controllers\OffersController::class, 'showReserveForm'])->name('reserveOffer.form')->middleware('verified');;
+Route::get('/reserve/{offer}', [App\Http\Controllers\OffersController::class, 'showReserveForm'])->name('reserveOffer.form')->middleware('verified');
 Route::get('/home/history', [App\Http\Controllers\OrderController::class, 'history'])->name('order.history')->middleware('auth');
 Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'sendQuestion'])->name('feedback.send');
+Route::post('/login/check', [\App\Http\Controllers\Auth\LoginController::class,'check_email'])->name('check_email');
+//Route::get('/register/{email}', [\App\Http\Controllers\Auth\RegisterController::class]);
+
 

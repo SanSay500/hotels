@@ -5,6 +5,12 @@
 @section('main')
 <section class="reserve">
     <div class="container">
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
     <form action="{{ route('offer.reserve', ['offer'=>$offer->id]) }}" method="POST">
         @csrf
         @method('PATCH')

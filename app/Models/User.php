@@ -25,6 +25,7 @@ class User extends Authenticatable
         'points',
         'role',
         'notif_ids',
+        'private_policy',
         'password',
         'permissions',
         'email_verified_at'

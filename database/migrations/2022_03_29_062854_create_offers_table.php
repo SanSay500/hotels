@@ -18,13 +18,13 @@ return new class extends Migration
             $table->text('offer_content')->nullable();
             $table->string('offer_hotel');
             $table->float('offer_price');
-            $table->tinyInteger('offer_nights');
+            $table->integer('offer_nights');
             $table->date('offer_arrival_date')->nullable();
             $table->string('offer_city')->index();
             $table->string('offer_meals')->nullable();
             $table->string('offer_room_class')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->tinyInteger('offer_rooms_quantity')->nullable();
+            $table->integer('offer_rooms_quantity')->nullable();
             $table->timestamps();
             $table->index('created_at');
         });

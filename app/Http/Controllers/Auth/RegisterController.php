@@ -71,10 +71,11 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'country' => $data['country'],
             'company' => $data['company'],
-            'description' => $data['description'],
             'role' => $data['role'],
             'notif_ids' => isset($data['notifications']) ? 1 : 0,
+            'private_policy' => isset($data['private_policy']) ? 1 : 0,
             'password' => Hash::make($data['password']),
         ]);
     }
+
 }
