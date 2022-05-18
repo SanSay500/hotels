@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class PasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -21,7 +22,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
 
     /**
@@ -31,6 +31,9 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+
+    public $email;
+
     /**
      * Create a new controller instance.
      *
@@ -38,16 +41,22 @@ class LoginController extends Controller
      */
     public function __construct(Request $request)
     {
-        $this->request=$request;
-       $this->middleware('guest')->except('logout');
+        //$this->middleware('guest');
     }
 
-    public function check_email(Request $request){
-        $user = User::where('email', $request->email)->first();
-        if (isset($user)) {
-            return Redirect::route('password.custom', ['email'=>$this->request->email]);
+    public function customLogin(Request $request)
+    {
+        $email=$request->email;
+        if (Auth::attempt(['email' => $email, 'password' => $request->password])) {
+            return redirect()->intended('home')
+                ->withSuccess('You are successfully signed in');
         } else {
-           return Redirect::route('register.enter', ['email'=>$this->request->email]);
+            return redirect('password')->with('error','Login details are not valid')->with('email', $email);
         }
     }
+    public function index(Request $request){
+        $this->email=$request->email;
+        return view('auth.password',['email'=>$this->email]);
+    }
+
 }

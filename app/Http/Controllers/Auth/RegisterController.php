@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -36,8 +37,9 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        $this->request=$request;
         $this->middleware('guest');
     }
 
@@ -76,6 +78,10 @@ class RegisterController extends Controller
             'private_policy' => isset($data['private_policy']) ? 1 : 0,
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function index(){
+        $email=$this->request->email;
+        return view('auth.register',['email'=>$email]);
     }
 
 }

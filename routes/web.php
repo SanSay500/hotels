@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/card', function () {
     return view('livewire.counter');
 });
+Route::get('/password', [\App\Http\Controllers\Auth\PasswordController::class,'index'])->name('password.custom');
+Route::post('/password/login', [\App\Http\Controllers\Auth\PasswordController::class,'customLogin'])->name('custom.login');
 Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'showFeedbackForm'])->name('feedback.form');
 Route::patch('/profile/{user}', [App\Http\Controllers\UserController::class, 'updateUser'])->name('profile.update')->middleware(['auth','can:update,user']);
 Route::patch('/home/reserve/{offer}', [App\Http\Controllers\OffersController::class, 'makeReserve'])->name('offer.reserve');
@@ -42,6 +44,5 @@ Route::get('/reserve/{offer}', [App\Http\Controllers\OffersController::class, 's
 Route::get('/home/history', [App\Http\Controllers\OrderController::class, 'history'])->name('order.history')->middleware('auth');
 Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'sendQuestion'])->name('feedback.send');
 Route::post('/login/check', [\App\Http\Controllers\Auth\LoginController::class,'check_email'])->name('check_email');
-//Route::get('/register/{email}', [\App\Http\Controllers\Auth\RegisterController::class]);
-
+Route::get('/register/enter', [\App\Http\Controllers\Auth\RegisterController::class,'index'])->name('register.enter');
 

@@ -4,6 +4,11 @@
 
 @section('main')
     <section class="profile">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="container">
             <h2 class="text-center">Welcome, {{ Auth::user()->name }}!</h2>
             <div class="link-container">

@@ -9,12 +9,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8 colum-md">
             <div class="card">
-
-                <div class="card-header">{{ __('Sign up or create an account') }}</div>
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                <div class="card-header">{{ __('Enter password for your account') }}</div>
 
                 <div class="card-body">
 
-                    <form method="POST" action="{{ route('check_email') }}">
+                    <form method="POST" action="{{ route('custom.login') }}">
                         @csrf
 
                             <div class="row mb-3 align-items-center">
@@ -30,12 +34,13 @@
                                     @enderror
                                 </div>
                             </div>
+                        <input hidden name="email" value="{{$email}}"/>
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
 
                                 <button type="submit" class="btn btn-primary btn-login">
-                                    {{ __('Continue via e-mail') }}
+                                    {{ __('Enter') }}
                                 </button>
                             </div>
                         </div>
