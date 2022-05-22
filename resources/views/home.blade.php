@@ -4,12 +4,13 @@
 
 @section('main')
     <section class="profile">
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+
         <div class="container">
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <h2 class="text-center">Welcome, {{ Auth::user()->name }}!</h2>
             <div class="link-container">
                 <a class="more-btn" href="{{route('offer.add')}}">Add Offer</a>

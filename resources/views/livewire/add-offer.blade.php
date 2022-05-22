@@ -1,4 +1,5 @@
-    <section class="offer__add">
+
+<section class="offer__add">
         <div class="container">
             <form action="{{ route('offer.store') }}" method="POST">
                 @csrf
@@ -12,35 +13,40 @@
         </span>
                     @enderror
                 </div>
+
                 <div class="form-group">
                     <label for="txtContent">City</label>
-                    <select wire:model="city" name="city" class="form-control">
-                        <option value=''>Choose a city</option>
+{{--                    <select wire:model="city" name="city" class="form-control">--}}
+{{--                        <option value=''>Choose a city</option>--}}
+{{--                        @foreach ($cities as $city)--}}
+{{--                            <option value={{$city->id}}>{{ $city->name }} </option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+                    <input list="cities" wire:model="city" placeholder="Enter city" class="form-control" />
+                    <datalist id="cities">
                         @foreach ($cities as $city)
-                            <option value={{$city->id}}>{{ $city->name }} </option>
+                            <option value="{{ $city->name }}">
                         @endforeach
-                    </select>
+{{--                    </datalist>--}}
                 </div>
+{{$city}}
 
-                <div class="form-group">
-                    <label for="txtContent">Hotel</label>
-                    <select wire:model="hotel" name = "hotel" class="form-control">
+                <label for="txtContent">Hotel</label>
+                <div class="from-control d-flex">
+               <select wire:model="hotel" name = "hotel" class="form-control">
                         <option value=''>Choose a hotel</option>
                         @foreach ($hotels as $hotel)
-                            <option value={{$hotel->id}}>{{ $hotel->name }} </option>
+                            <option value={{$hotel->id}}> {{ $hotel->name }} </option>
                         @endforeach
                     </select>
-                </div>
+{{--                    <x-dialog blur="md">--}}
+{{--                        <x-input h-3.5 label="Enter Hotel Name in {{$city->name}}" placeholder="Hotel name" />--}}
+{{--                    </x-dialog>--}}
 
-                <div class="form-group">
-                    <label for="txtContent">Description</label>
-                    <textarea name="content" id="txtContent"
-                              class="form-control @error ('content') is-invalid @enderror" row="3" value="{{ old('content') }}"></textarea>
-                    @error ('content')
-                    <span class="invalid-feedback">
-                <strong>{{ $message }}</strong>
-            </span>
-                    @enderror
+{{--                    <x-button wire:click="save()" blue label="Add"     />--}}
+            {{$city->name}}
+
+
                 </div>
 
                 <div class="form-group">
@@ -95,7 +101,7 @@
                 </div>
                 <br>
                 <div class="btn-container"><a class="more-btn back-btn" href="/home">Back</a>
-                    <input type="submit" class="more-btn back-btn" value="Add "> </div>
+                    <input type="submit" class="more-btn back-btn" value="Publish offer"> </div>
             </form>
             <br>
 

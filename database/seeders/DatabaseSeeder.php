@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CitySeeder::class,
             HotelSeeder::class,
+            OrderStatusSeeder::class,
         ]);
          DB::table('rooms')->insert(values: [
              'room_class'=>'Standart'

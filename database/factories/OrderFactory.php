@@ -25,6 +25,7 @@ class OrderFactory extends Factory
             'city'=>$this->faker->city(),
             'seller_id'=>$this->faker->numberBetween(1,7),
             'buyer_id'=>$this->faker->numberBetween(1,7),
+            'status'=>$this->faker->randomElement(['Pending','Processing','Completed']),
             'rooms_quantity'=>$this->faker->numberBetween(1,15)
         ];
     }

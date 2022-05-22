@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Models\City;
 
 
 
@@ -33,5 +34,6 @@ class FeedbackController extends Controller
         return back()->with('success', 'Thanks for contacting us! We will get back to you soon!');
 
     }
+
 }
 

@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/card', function () {
     return view('livewire.counter');
 });
+
+Route::view('/powergrid', 'powergrid-demo');
 Route::get('/password', [\App\Http\Controllers\Auth\PasswordController::class,'index'])->name('password.custom');
 Route::post('/password/login', [\App\Http\Controllers\Auth\PasswordController::class,'customLogin'])->name('custom.login');
 Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'showFeedbackForm'])->name('feedback.form');

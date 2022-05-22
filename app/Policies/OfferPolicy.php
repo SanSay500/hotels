@@ -27,12 +27,6 @@ class OfferPolicy
     public function delete(User $user, Offer $offer){
         return $this->update($user, $offer);
     }
-    public function before(User $user, $ability)
-    {
-        if ($user->hasAccess('private-offer-resources')) {
-            return true;
-        }
-    }
 
 
 }

@@ -66,7 +66,6 @@ class HomeController extends Controller
 
         $validated = $request->validate(self::OFFER_VALIDATOR, self::OFFER_ERROR_MESSAGES);
         $users = User::where('notif_ids', 1)->get();
-        $city = City::where('id',$request['city'])->first()->name;
         $hotel = Hotel::where('id',$request['hotel'])->first()->name;
         Auth::user()->offers()->create(
                ['offer_content' =>'',
@@ -76,7 +75,7 @@ class HomeController extends Controller
                 'offer_room_class'=>$validated['room_class'],
                 'offer_meals'=>$validated['meals'],
                 'offer_arrival_date'=>$validated['arrivalDate'],
-                'offer_city'=>$city,
+                'offer_city'=>$request->city,
                 'offer_price'=>$validated['price']
         ]);
         $offer = Offer::get()->last()->id;

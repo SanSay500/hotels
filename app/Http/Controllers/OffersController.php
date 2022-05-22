@@ -52,6 +52,7 @@ class OffersController extends Controller
             'nights' => $offer->offer_nights,
             'price' => $offer->offer_price,
             'seller_id'=>$offer->user_id,
+            'status'=>'Pending',
             'buyer_id'=>Auth::user()->id
         ]);
         $user = User::where('id',$offer->user_id)->first();

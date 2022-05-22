@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class PasswordController extends Controller
 {
@@ -41,7 +42,7 @@ class PasswordController extends Controller
      */
     public function __construct(Request $request)
     {
-        //$this->middleware('guest');
+        $this->middleware('web');
     }
 
     public function customLogin(Request $request)
@@ -51,12 +52,13 @@ class PasswordController extends Controller
             return redirect()->intended('home')
                 ->withSuccess('You are successfully signed in');
         } else {
-            return redirect('password')->with('error','Login details are not valid')->with('email', $email);
+            return back()->with('error','Login details are not valid')->with('email', $email);
         }
     }
     public function index(Request $request){
-        $this->email=$request->email;
-        return view('auth.password',['email'=>$this->email]);
+
+               $this->email=$request->email;
+        return view('auth.password', ['email'=>$request->email]);
     }
 
 }

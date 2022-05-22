@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('price');
             $table->string('rooms_quantity');
             $table->string('nights');
+            $table->string('status');
+            $table->foreignId('order_status_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

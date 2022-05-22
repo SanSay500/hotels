@@ -29,6 +29,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            <input hidden type="password">
                         </div>
 
                         <div class="row mb-0">
