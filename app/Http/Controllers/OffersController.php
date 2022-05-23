@@ -18,7 +18,6 @@ class OffersController extends Controller
     {
 
     }
-
     public function index()
     {
        //$offers = Offer::all();

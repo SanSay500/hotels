@@ -75,11 +75,13 @@ class HomeController extends Controller
                 'offer_room_class'=>$validated['room_class'],
                 'offer_meals'=>$validated['meals'],
                 'offer_arrival_date'=>$validated['arrivalDate'],
+                'offer_status'=>'Inactive',
                 'offer_city'=>$request->city,
                 'offer_price'=>$validated['price']
         ]);
         $offer = Offer::get()->last()->id;
-        //Notification::send($users, new GotNewOffer($city, $hotel, $offer));
+        Notification::send($users, new GotNewOffer($request->city, $hotel, $offer));
+
         //$notifJob = (new NotificationsJOb)->delay(now()->addSeconds(5));
         //dispatch($notifJob);
         return redirect()->route('home');

@@ -18,6 +18,7 @@ class OfferFactory extends Factory
     {
         return [
         'offer_content'=>$this->faker->text(),
+        'offer_status'=>$this->faker->randomElement(['Active', 'Inactive']),
         'offer_hotel'=>$this->faker->company(),
         'offer_price'=>$this->faker->numberBetween(500,10000),
         'offer_nights'=>$this->faker->numberBetween(1,30),

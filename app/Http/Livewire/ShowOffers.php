@@ -67,7 +67,7 @@ class ShowOffers extends Component
     {
 
         $this->offers = Offer::query()->where('offer_rooms_quantity','>',0)
-            ->where('offer_arrival_date','>', now())
+            ->where('offer_arrival_date','>', now())->where('offer_status','Active')
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc');
 
         if(!empty($this->filters)){

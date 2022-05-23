@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('offer_room_class')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('offer_rooms_quantity')->nullable();
+            $table->string('offer_status');
             $table->timestamps();
             $table->index('created_at');
         });

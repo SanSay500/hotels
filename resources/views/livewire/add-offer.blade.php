@@ -1,9 +1,18 @@
-
-<section class="offer__add">
+    <section class="offer__add">
         <div class="container">
+
             <form action="{{ route('offer.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
+                    @if(session('success'))
+                    <div class="container">
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+
+                            </div>
+                    </div>
+                    @endif
+
                     <label for="txtArrivalDate">Arrival Date</label>
                     <input name="arrivalDate" type="date" min="<?php echo date("Y-m-d"); ?>" id="txtArrivalDate" class="form-control
                    @error ('arrivalDate') is-invalid @enderror" value="{{ old('arrivalDate') }}">
@@ -22,14 +31,13 @@
 {{--                            <option value={{$city->id}}>{{ $city->name }} </option>--}}
 {{--                        @endforeach--}}
 {{--                    </select>--}}
-                    <input list="cities" wire:model="city" placeholder="Enter city" class="form-control" />
+                    <input list="cities" wire:model="city" name="city" class="form-control" placeholder="Enter city"/>
                     <datalist id="cities">
-                        @foreach ($cities as $city)
-                            <option value="{{ $city->name }}">
+                        @foreach ($cities as $c)
+                            <option value="{{ $c->name }}">
                         @endforeach
-{{--                    </datalist>--}}
+                    </datalist>
                 </div>
-{{$city}}
 
                 <label for="txtContent">Hotel</label>
                 <div class="from-control d-flex">
@@ -39,14 +47,10 @@
                             <option value={{$hotel->id}}> {{ $hotel->name }} </option>
                         @endforeach
                     </select>
-{{--                    <x-dialog blur="md">--}}
-{{--                        <x-input h-3.5 label="Enter Hotel Name in {{$city->name}}" placeholder="Hotel name" />--}}
-{{--                    </x-dialog>--}}
-
-{{--                    <x-button wire:click="save()" blue label="Add"     />--}}
-            {{$city->name}}
-
-
+                    @if ($city)
+                    <a href="/hotel/add/{{$city}}"
+                       class="">Add</a>
+                    @endif
                 </div>
 
                 <div class="form-group">
@@ -101,7 +105,7 @@
                 </div>
                 <br>
                 <div class="btn-container"><a class="more-btn back-btn" href="/home">Back</a>
-                    <input type="submit" class="more-btn back-btn" value="Publish offer"> </div>
+                    <input type="submit" class="more-btn back-btn" value="Publish offer "> </div>
             </form>
             <br>
 
