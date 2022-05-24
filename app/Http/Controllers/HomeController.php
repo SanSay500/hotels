@@ -77,6 +77,7 @@ class HomeController extends Controller
                 'offer_arrival_date'=>$validated['arrivalDate'],
                 'offer_status'=>'Inactive',
                 'offer_city'=>$request->city,
+                'private_policy'=> isset($request['private_policy']) ? 1 : 0,
                 'offer_price'=>$validated['price']
         ]);
         $offer = Offer::get()->last()->id;

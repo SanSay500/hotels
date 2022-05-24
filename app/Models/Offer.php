@@ -21,6 +21,7 @@ class Offer extends Model
        'offer_meals',
        'offer_arrival_date',
        'offer_price',
+       'private_policy',
        'offer_status',
        'user_id','offer_city'];
 

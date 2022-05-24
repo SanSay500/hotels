@@ -32,8 +32,9 @@
                                 <label for="email" class="col-md-4 text-md-end card-label">{{ __('Email Address') }}</label>
 
                                 <div class="col-md-6">
+                                    @if (isset($email))
                                     <input id="email" value ="{{ $email }}" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                    @endif
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -119,13 +120,6 @@
                                     <div class="col-md-6">
                                     <input type="checkbox" id="notifications" name="notifications">
                                     </div>
-                            </div>
-
-                            <div class="row mb-3 align-items-center">
-                                <label for="private_policy" class="col-md-4 col-form-label text-md-end card-label">{{ __('Show your contacts after reserve') }}</label>
-                                <div class="col-md-6">
-                                    <input type="checkbox" id="private_policy" name="private_policy">
-                                </div>
                             </div>
 
                             <div class="row mb-0">

@@ -103,6 +103,14 @@
             </span>
                     @enderror
                 </div>
+                <div class="row mb-3 align-items-center">
+                    <label title="Show my contact details to all those interested in my offers." for="private_policy"
+                           class="col-md-4 col-form-label text-sd-end card-label">
+                        {{ __('Private policy') }}</label>
+                    <div class="col-md-6">
+                        <input type="checkbox" id="private_policy" name="private_policy">
+                    </div>
+                </div>
                 <br>
                 <div class="btn-container"><a class="more-btn back-btn" href="/home">Back</a>
                     <input type="submit" class="more-btn back-btn" value="Publish offer "> </div>

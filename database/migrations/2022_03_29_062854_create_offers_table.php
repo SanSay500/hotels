@@ -26,6 +26,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('offer_rooms_quantity')->nullable();
             $table->enum('offer_status', ['Active', 'Inactive']);
+            $table->boolean('private_policy')->nullable();
             $table->timestamps();
             $table->index('created_at');
         });

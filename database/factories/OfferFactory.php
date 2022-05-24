@@ -26,6 +26,7 @@ class OfferFactory extends Factory
         'offer_city'=>$this->faker->city(),
         'offer_meals'=>$this->faker->randomElement(['RO', 'BB', 'HB', 'FB', 'AI']),
         'offer_room_class'=>$this->faker->randomElement(['Superior', 'Standart']),
+        'private_policy'=>$this->faker->randomElement([1,0]),
         'user_id'=>$this->faker->numberBetween(1,7),
         'offer_rooms_quantity'=>$this->faker->numberBetween(1,100)
         ];

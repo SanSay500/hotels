@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('role')->nullable();
             $table->time('notif_time')->nullable();
             $table->boolean('notif_ids')->nullable();
-            $table->boolean('private_policy')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

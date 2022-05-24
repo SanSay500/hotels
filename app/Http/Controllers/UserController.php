@@ -33,7 +33,6 @@ class UserController extends Controller
                 'description'=>$validated['description'],
                 'phone'=>$validated['phone'],
                 'notif_ids'=> isset($request['notifications']) ? 1 : 0,
-                'private_policy'=> isset($request['private_policy']) ? 1 : 0,
             ]);
         $user->save();
         return redirect()->route('user.profile');

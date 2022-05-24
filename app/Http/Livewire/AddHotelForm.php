@@ -19,8 +19,8 @@ class AddHotelForm extends ModalComponent
 //        ];
 //        Hotel::create($data);
 //    }
-    public function render()
-    {
-        return view('livewire.add-hotel-form');
-    }
+//    public function render()
+//    {
+//        return view('livewire.add-hotel-form');
+//    }
 }
