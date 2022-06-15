@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\HotelRequest;
+use App\Http\Requests\OrderStatusRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class HotelCrudController
+ * Class OrderStatusCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class HotelCrudController extends CrudController
+class OrderStatusCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class HotelCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Hotel::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/hotel');
-        CRUD::setEntityNameStrings('hotel', 'hotels');
+        CRUD::setModel(\App\Models\OrderStatus::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/order-status');
+        CRUD::setEntityNameStrings('order status', 'order statuses');
     }
 
     /**
@@ -39,9 +39,8 @@ class HotelCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('city_id');
-        CRUD::column('street');
+        CRUD::column('id');
+        CRUD::column('status_name');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,11 +57,10 @@ class HotelCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(HotelRequest::class);
+        CRUD::setValidation(OrderStatusRequest::class);
 
-        CRUD::field('name');
-        CRUD::field('city_id');
-        CRUD::field('street');
+        CRUD::field('id');
+        CRUD::field('status_name');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
