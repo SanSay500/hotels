@@ -17,7 +17,7 @@
     <p><span class="info-label">Price:</span> {{$offer->offer_price}} NIS</p>
     <div class="btn-container"><a href="/" class="more-btn back-btn">Back</a>
 @auth
-        <a class="more-btn" href="{{route('reserveOffer.form', $offer->id)}}">Make Reserve</a></div>
+        <a class="more-btn" href="{{route('reserveOffer.form', $offer->id)}}">Make reservation</a></div>
 @endauth
     </div>
 </section>

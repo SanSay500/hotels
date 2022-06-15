@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('title', 'Verification')
 
 @section('main')
 <div class="container">
@@ -9,7 +10,7 @@
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                            {{ __('New verification link has been sent to your email address.') }}
                         </div>
                     @endif
 

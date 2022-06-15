@@ -1,4 +1,28 @@
     <section class="offer__add">
+    <style>
+        [data-tooltip] {
+        position: relative; /* Относительное позиционирование */ 
+        }
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            width: 300px; 
+            left: 0; top: 0px; 
+            background-color: #0d6efd; 
+            font-size: 10px;
+            line-height: 12px;
+            color: #fff; 
+            padding: 5px 10px; 
+            pointer-events: none; 
+            opacity: 0; 
+            transition: 1s;
+        }
+        [data-tooltip]:hover::after, [data-tooltip]:focus::after {
+    opacity: 1; /* Показываем подсказку */
+    top: 4em;
+    left: 20px /* Положение подсказки */
+   }
+    </style>
         <div class="container">
 
             <form action="{{ route('offer.store') }}" method="POST">
@@ -105,8 +129,8 @@
                 </div>
                 <div class="row mb-3 align-items-center">
                     <label title="Show my contact details to all those interested in my offers." for="private_policy"
-                           class="col-md-4 col-form-label text-sd-end card-label">
-                        {{ __('Private policy') }}</label>
+                           class="col-md-4 col-form-label text-sd-end card-label privacy-label" >
+                        <span data-tooltip="Show my contact details to all those interested in my offers.">{{ __('Private policy') }}</span></label>
                     <div class="col-md-6">
                         <input type="checkbox" id="private_policy" name="private_policy">
                     </div>

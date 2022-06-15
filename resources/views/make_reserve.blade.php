@@ -25,7 +25,7 @@
     <input size="2" name="rooms" id="txtRooms"
            class="" value="{{ old('rooms', $offer->offer_rooms_quantity) }}">
     </label>
-    <input type="submit" class="btn btn-primary" value="Reserve">
+    <input type="submit" class="btn btn-primary" value="Make reservation">
     </form>
     </div>
 

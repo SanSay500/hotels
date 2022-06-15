@@ -4,7 +4,33 @@
 
 @section('main')
     <section class="profile">
-
+<style>
+    .colw-10{
+        padding-right: 0;
+    }
+    .colst{
+        padding-left: 0;
+    }
+    .log-btn{
+            width: 100%;
+        }
+        .colml{
+            text-align: center;
+        }
+    @media(max-width: 768px){
+        .colw-10{
+        width: 45%;
+    }
+        .colml{
+            width: 45%;
+            padding-right: 0;
+            padding-left: 0;
+            margin-bottom: 10px;
+            
+        }
+        
+    }
+</style>
         <div class="container">
             @if(session('success'))
                 <div class="alert alert-success">
@@ -12,17 +38,26 @@
                 </div>
             @endif
             <h2 class="text-center">Welcome, {{ Auth::user()->name }}!</h2>
-            <div class="link-container">
-                <a class="more-btn" href="{{route('offer.add')}}">Add Offer</a>
-                <a class="more-btn" href="{{route('user.profile')}}">My Profile</a>
-                <a class="more-btn" href="{{route('order.history')}}">Order History</a>
-                <form action="{{ route('logout') }}" method="POST"
-                      class="form-inline">
+                <div class="container">
+                    <div class="row justify-content-between">
+                <div class="col-6 col-md-3 colst colml">
+                    <a class="more-btn" href="{{route('offer.add')}}">Add Offer</a>
+                </div>
+                <div class="col-6 col-md-3 colml">
+                    <a class="more-btn" href="{{route('user.profile')}}">My Profile
+                    </a></div>
+                <div class="col-6 col-md-3 colml">
+                    <a class="more-btn" href="{{route('order.history')}}">Order History</a>
+                </div>
+                <div class="col-6 col-md-3 colw-10 colml">
+                <form action="{{ route('logout') }}" method="POST" class="d-flex justify-content-end">
                     @csrf
-                    <input type="submit" class="more-btn"
+                    <input type="submit" class="more-btn log-btn"
                            value="Logout">
                 </form>
+                </div>
             </div>
+                </div>
             <h3 class="my-3 text-center">My Offers</h3>
             @if (count($offers)>0)
                 <table class="table table-stripped">

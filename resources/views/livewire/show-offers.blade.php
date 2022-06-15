@@ -43,7 +43,7 @@
         }
     </style>
     <div class="container">
-        @guest
+
             <div class="info-for-agent">
                 <ul class="info-list">
                     <h3 class="dear">Dear Agent,</h3>
@@ -61,7 +61,7 @@
                     <li class="info-item">Your feedback is highly appreciated and will help us improve our service.</li>
                 </ul>
             </div>
-        @endguest
+        @if (count($offers) > 0)
         <div class="filter-container">
             <div class="filter filter-city">
                 <label for="filter-city" class="card-label offer-label">{{ __('Filter by City') }}</label>
@@ -139,36 +139,40 @@
             @endforeach
             </tbody>
         </table>
+            @endif
 
-            @if($offers->hasMorePages())
                 @if((new \Jenssegers\Agent\Agent())->isMobile())
                     @guest
                 <div class="div-login">
                         <div>
-                            <a href="{{ route('register') }}">Sign up&nbsp </a>/
+                            <a href="{{ route('login') }}">Sign up&nbsp </a>/
                             <a href="{{ route('login') }}">&nbspLogin&nbsp</a><br>to see
                             more options
                         </div>
                     @endguest
+                    @if($offers->hasMorePages())
                     <div class="div-btn-right">
                         <button class="btn btn-primary" wire:click.prevent="loadMore">Show more</button>
                     </div>
+                    @endif
                 </div>
-
                 @else
+                    @if ($offers->hasMorePages())
                     <div class="div-btn-center">
                         <button class="btn btn-primary" wire:click.prevent="loadMore">Show more</button>
                     </div>
                 <br>
+                    @endif
                     @guest
                         <div class="div-btn-center">
-                            <a href="{{ route('register') }}">Sign up&nbsp </a>/
+                            <a href="{{ route('login') }}">Sign up&nbsp </a>/
                             <a href="{{ route('login') }}">&nbspLogin&nbsp</a>to see
                             more options
                         </div>
                    @endguest
     @endif
-    @endif
+
+
 
 </section>
 

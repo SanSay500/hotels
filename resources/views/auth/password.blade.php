@@ -43,6 +43,9 @@
                                     {{ __('Enter') }}
                                 </button>
                             </div>
+                            <a class="text-center fs-6" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
                         </div>
 
                     </form>
