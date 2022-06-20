@@ -80,7 +80,11 @@ class RegisterController extends Controller
             'private_policy' => isset($data['private_policy']) ? 1 : 0,
             'password' => Hash::make($data['password']),
         ]);
+<<<<<<< HEAD
 		event(new Registered($user));
+=======
+     		//event(new Registered($user));
+>>>>>>> 0b6ac119551a2057ce8be741bd5de1b73f060606
     }
     public function index(){
         $email=$this->request->email;

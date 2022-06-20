@@ -7722,6 +7722,7 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "laravel/dusk",
             "version": "v6.24.0",
             "source": {
@@ -7804,6 +7805,17 @@
             },
             "dist": {
                 "type": "zip",
+=======
+            "name": "laravel/sail",
+            "version": "v1.14.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "0ea5d683af4d189071efcdb9e83946c10dab82c3"
+            },
+            "dist": {
+                "type": "zip",
+>>>>>>> 0b6ac119551a2057ce8be741bd5de1b73f060606
                 "url": "https://api.github.com/repos/laravel/sail/zipball/0ea5d683af4d189071efcdb9e83946c10dab82c3",
                 "reference": "0ea5d683af4d189071efcdb9e83946c10dab82c3",
                 "shasum": ""
@@ -10134,6 +10146,7 @@
         },
         {
             "name": "spatie/laravel-ignition",
+<<<<<<< HEAD
             "version": "1.2.4",
             "source": {
                 "type": "git",
@@ -10144,6 +10157,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/b90026ba26fe6589101dc5cd6527846290560aea",
                 "reference": "b90026ba26fe6589101dc5cd6527846290560aea",
+=======
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-ignition.git",
+                "reference": "5409e699fc19f4d53e59427445b08f90593fda28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/5409e699fc19f4d53e59427445b08f90593fda28",
+                "reference": "5409e699fc19f4d53e59427445b08f90593fda28",
+>>>>>>> 0b6ac119551a2057ce8be741bd5de1b73f060606
                 "shasum": ""
             },
             "require": {
@@ -10220,7 +10245,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-08T07:07:57+00:00"
+            "time": "2022-06-15T13:55:18+00:00"
         },
         {
             "name": "symfony/debug",
