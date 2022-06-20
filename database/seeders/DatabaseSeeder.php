@@ -1,13 +1,15 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\User;
 use App\Models\Meal;
 use App\Models\Order;
 use App\Models\Room;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Faker\Factory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,6 +27,10 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             HotelSeeder::class,
             OrderStatusSeeder::class,
+        ]);
+        User::factory()->create([
+            'name' => 'Alex',
+            'email' => 'borodachev@gmail.com',
         ]);
          DB::table('rooms')->insert(values: [
              'room_class'=>'Standart'

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->smallInteger('points')->nullable();
-            $table->string('role')->nullable();
+            $table->enum('role',['Agent', 'Hotel']);
             $table->time('notif_time')->nullable();
             $table->boolean('notif_ids')->nullable();
             $table->rememberToken();

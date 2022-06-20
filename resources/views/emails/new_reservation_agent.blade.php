@@ -1,5 +1,5 @@
 
-<h2>You got new Reserve!</h2>
+<h2>You got new reservation!</h2>
 <strong>Clients Contact Is:</strong>
 <p>Email: {{$user->email}}</p>
 <p>Phone: {{$user->phone}}</p>

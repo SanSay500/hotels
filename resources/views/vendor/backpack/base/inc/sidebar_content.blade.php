@@ -7,3 +7,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('room') }}'><i class='nav-icon la la-question'></i> Rooms</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('city') }}'><i class='nav-icon la la-question'></i> Cities</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('hotel') }}'><i class='nav-icon la la-question'></i> Hotels</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('order-status') }}'><i class='nav-icon la la-question'></i> Order statuses</a></li>

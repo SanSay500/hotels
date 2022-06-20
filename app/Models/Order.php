@@ -22,7 +22,17 @@ class Order extends Model
         'status',
         'offer_id'];
 
+/*
+ * RELATIONS
+ */
     public function order_statuses(){
         return $this->belongsTo(OrderStatus::class);
     }
+    public function seller(){
+        return $this->belongsTo(User::class);
+    }
+    public function buyer(){
+        return $this->belongsTo(User::class);
+    }
+
 }

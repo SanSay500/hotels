@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('street');
-            $table->foreignId('city_id')->constrained()->onDelete('cascade');
+                $table->foreignId('city_id')->constrained('cities','id')->onDelete('cascade');
             $table->timestamps();
         });
     }

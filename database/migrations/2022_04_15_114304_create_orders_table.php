@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('offer_id');
-            $table->integer('buyer_id');
-            $table->integer('seller_id');
+            $table->foreignId('buyer_id')->constrained('users','id')->onDelete('cascade');
+            $table->foreignId('seller_id')->constrained('users','id')->onDelete('cascade');
             $table->string('city');
             $table->string('hotel');
             $table->date('arrival_date');

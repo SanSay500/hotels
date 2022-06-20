@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Testing\Fluent\Concerns\Has;
 use Orchid\Platform\Models\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
-    use Notifiable;
+    use Notifiable, \Backpack\CRUD\app\Models\Traits\CrudTrait, HasFactory;
+
 
     /**
      * The attributes that are mass assignable.
@@ -74,8 +76,13 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
-
+/*
+ * RELATIONS
+ */
     public function offers(){
         return $this->hasMany(Offer::class);
+    }
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 }
