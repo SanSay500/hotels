@@ -84,6 +84,7 @@ class ShowOffers extends Component
             }
         }
         $this->offers=$this->offers->paginate($this->perPage);
+
         return view('livewire.show-offers', ['offers'=>$this->offers]);
     }
 
