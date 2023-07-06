@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Testing\Fluent\Concerns\Has;
-use Orchid\Platform\Models\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
-class User extends Authenticatable
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, \Backpack\CRUD\app\Models\Traits\CrudTrait, HasFactory;
+
+    use Notifiable, HasFactory;
 
 
     /**

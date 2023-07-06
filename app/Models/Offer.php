@@ -4,14 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Orchid\Attachment\Attachable;
-use Orchid\Filters\Filterable;
-use Orchid\Screen\AsSource;
 
 class Offer extends Model
 {
-    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
-   use HasFactory, AsSource, Filterable, Attachable;
+
+   use HasFactory;
 
    protected $fillable=['offer_content',
        'offer_hotel',
